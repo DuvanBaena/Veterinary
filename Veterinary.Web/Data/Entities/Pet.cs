@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using Veterinary.Web.Data.Entities;
 
-namespace Veterinary.Web.Models.Entities
+namespace Veterinary.Web.Data.Entities
 {
     [Table("TblPet")]
     public class Pet
@@ -41,7 +38,7 @@ namespace Veterinary.Web.Models.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime BornLocal => Born.ToLocalTime();
 
-        public PetType  PetType { get; set; }
+        public PetType PetType { get; set; }
 
         public Owner Owner { get; set; }
 

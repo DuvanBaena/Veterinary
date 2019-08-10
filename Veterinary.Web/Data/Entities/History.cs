@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Veterinary.Web.Models.Entities
+namespace Veterinary.Web.Data.Entities
 {
     [Table("TblHistory")]
     public class History

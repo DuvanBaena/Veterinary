@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Models.Data;
-using Veterinary.Web.Models.Entities;
 
 namespace Veterinary.Web.Controllers
 {

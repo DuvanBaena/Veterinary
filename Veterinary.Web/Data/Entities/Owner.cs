@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Veterinary.Web.Data.Entities;
 
-namespace Veterinary.Web.Models.Entities
+namespace Veterinary.Web.Data.Entities
 {
     [Table("TblOwner")]
     public class Owner

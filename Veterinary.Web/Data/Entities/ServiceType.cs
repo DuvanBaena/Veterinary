@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Veterinary.Web.Models.Entities
+namespace Veterinary.Web.Data.Entities
 {
     [Table("TblServiceType")]
     public class ServiceType

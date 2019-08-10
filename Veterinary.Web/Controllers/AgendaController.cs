@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Models.Data;
-using Veterinary.Web.Models.Entities;
 
 namespace Veterinary.Web.Controllers
 {
