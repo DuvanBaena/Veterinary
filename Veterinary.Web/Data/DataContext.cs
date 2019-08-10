@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Models.Entities;
 
 namespace Veterinary.Web.Models.Data

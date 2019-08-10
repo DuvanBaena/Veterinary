@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29021.104
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Veterinary.Common", "Veterinary.Common\Veterinary.Common.csproj", "{01C9049B-48FF-46D9-8EA9-EFCE507430C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veterinary.Common", "Veterinary.Common\Veterinary.Common.csproj", "{01C9049B-48FF-46D9-8EA9-EFCE507430C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Veterinary.Web", "Veterinary.Web\Veterinary.Web.csproj", "{DF708FAA-A29D-4C64-98A7-F9F477AD286A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veterinary.Web", "Veterinary.Web\Veterinary.Web.csproj", "{DF708FAA-A29D-4C64-98A7-F9F477AD286A}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Veterinary.ProjectDb", "Veterinary.ProjectDb\Veterinary.ProjectDb.sqlproj", "{E5E8705A-A906-4F11-A9E7-1D258DFF16BC}"
 EndProject

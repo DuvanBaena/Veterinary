@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Models.Data;
 using Veterinary.Web.Models.Entities;
 

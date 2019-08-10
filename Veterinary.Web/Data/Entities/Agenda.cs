@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Veterinary.Web.Models.Entities;
 
-namespace Veterinary.Web.Models.Entities
+namespace Veterinary.Web.Data.Entities
 {
     [Table("TblAgenda")]
     public class Agenda
