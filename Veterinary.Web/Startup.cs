@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AppMyVet.Web.Helpers;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Veterinary.Web.Data;
 using Veterinary.Web.Data.Entities;
+using Veterinary.Web.Helpers;
 using Veterinary.Web.Models.Data;
 
 namespace Veterinary.Web
@@ -78,7 +73,7 @@ namespace Veterinary.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Owners}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

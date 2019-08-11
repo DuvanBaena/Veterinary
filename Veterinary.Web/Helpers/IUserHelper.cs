@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Models;
 
-namespace AppMyVet.Web.Helpers
+namespace Veterinary.Web.Helpers
 {
     public interface IUserHelper
     {
