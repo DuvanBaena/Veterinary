@@ -21,9 +21,6 @@
     </environment>
 </head>
 <body>
-
-
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -40,8 +37,11 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        <li><a asp-area="" asp-controller="Owners" asp-action="Index">Owners</a></li>
-                        <li><a asp-area="" asp-controller="Managers" asp-action="Index">Managers</a></li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                          <li><a asp-area="" asp-controller="Owners" asp-action="Index">Owners</a></li>
+                          <li><a asp-area="" asp-controller="Managers" asp-action="Index">Managers</a></li>
+                        }
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (User.Identity.IsAuthenticated)

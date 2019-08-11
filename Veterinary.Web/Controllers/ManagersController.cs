@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppMyVet.Web.Data.Entities;
 using Veterinary.Web.Models.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Veterinary.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManagersController : Controller
     {
         private readonly DataContext _context;
