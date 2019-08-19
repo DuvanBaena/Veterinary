@@ -6,68 +6,88 @@
     <title>@ViewData["Title"] - Mercamascotas.Web</title>
 
     <environment include="Development">
-        @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">*@
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
         @*<link rel="stylesheet" href="~/css/site.css" />*@
-        <link rel="stylesheet" href="~/css/Site2.css" />
-      
+        <link rel="stylesheet" href="~/css/Site.css" />
+
     </environment>
     <environment exclude="Development">
-        @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />*@
-        @*<link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />*@
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Veterinary.Web</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                          <li><a asp-area="" asp-controller="Owners" asp-action="Index">Owners</a></li>
-                          <li><a asp-area="" asp-controller="Managers" asp-action="Index">Managers</a></li>
-                        }
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li><a asp-area="" asp-controller="Account" asp-action="ChangeUser">@User.Identity.Name</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
-                        }
-                        else
-                        {
-                            <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                        }
-                    </ul>
-
-                </div>
+    <app>
+        <div class="sidebar">
+            <div class="top-row pl-4 navbar navbar-dark">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-brand" href="">@User.Identity.Name</a>
+                }
             </div>
-        </nav>
+            <div class="collapse">
+                <ul class="nav flex-column">
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item px-3">
+                            <a class="nav-link" asp-controller="Owners" asp-action="Index" match="All">
+                                <span class="oi oi-home" aria-hidden="true"></span> Owners
+                            </a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link" href="">
+                                <span class="oi oi-plus" aria-hidden="true"></span> Managers
+                            </a>
+                        </li>
+                    }
+
+                    <li class="nav-item px-3">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Home
+                        </a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">
+                            <span class="oi oi-plus" aria-hidden="true"></span> About
+                        </a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main">          
+            @if (User.Identity.IsAuthenticated)
+            {
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a asp-area="" asp-controller="Account" asp-action="ChangeUser" class="navbar-brand">@User.Identity.Name</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                        </ul>
+                        <div class="form-inline my-2 my-lg-0">
+                            <a asp-area="" asp-controller="Account" asp-action="Logout" class="btn btn-outline-success">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+
+            }
+            <div class="content px-4">
+                @RenderBody()
+            </div>
+        </div>
+    </app>
 
     <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        @*<footer>
-            <p>&copy; 2019 - Veterinary.Web</p>
-        </footer>*@
-    </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

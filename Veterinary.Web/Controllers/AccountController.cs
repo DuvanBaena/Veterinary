@@ -51,51 +51,9 @@ namespace Veterinary.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await _userHelper.LogoutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
-
-
-
-
-
-
-
-
-        [HttpPost]
-        public async Task<IActionResult> Login2(LoginViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await _userHelper.LoginAsync(model);
-
-                if (result.Succeeded)
-                {
-                    if (Request.Query.Keys.Contains("ReturnUrl"))
-                    {
-                        return Redirect(Request.Query["ReturnUrl"].First());
-                    }
-
-                    return RedirectToAction("Index", "Home");
-                }
-
-                ModelState.AddModelError(string.Empty, "Failed to login.");
-                model.Password = string.Empty;
-            }
-
-
-            return View(model);
-        }
-
-
-
-
-
-
-
-
-
-
-
+        
 
     }
     
