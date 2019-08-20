@@ -25,7 +25,7 @@
             <div class="top-row pl-4 navbar navbar-dark">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a class="navbar-brand" href="">@User.Identity.Name</a>
+                    <a class="navbar-brand" href="#">@User.Identity.Name</a>
                 }
             </div>
             <div class="collapse">
@@ -33,13 +33,23 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li class="nav-item px-3">
-                            <a class="nav-link" asp-controller="Owners" asp-action="Index" match="All">
+                            <a class="nav-link" asp-controller="Owners" asp-action="Index">
                                 <span class="oi oi-home" aria-hidden="true"></span> Owners
                             </a>
                         </li>
                         <li class="nav-item px-3">
                             <a class="nav-link" href="">
                                 <span class="oi oi-plus" aria-hidden="true"></span> Managers
+                            </a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link" asp-controller="PetTypes" asp-action="Index">
+                                <span class="oi oi-plus" aria-hidden="true"></span> Pet Types
+                            </a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link" asp-controller="ServiceTypes" asp-action="Index">
+                                <span class="oi oi-plus" aria-hidden="true"></span> Service Type
                             </a>
                         </li>
                     }
