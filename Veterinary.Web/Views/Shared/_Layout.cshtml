@@ -93,13 +93,14 @@
                 </nav>
 
             }
-            <div class="content px-4">
-                @RenderBody()
-            </div>
+        <div class="content px-4">
+            @RenderBody()
+            @*<partial name="_CookieConsentPartial" />*@
+        </div>
         </div>
     </app>
 
-    <partial name="_CookieConsentPartial" />
+   
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

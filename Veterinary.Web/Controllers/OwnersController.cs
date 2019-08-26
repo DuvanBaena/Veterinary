@@ -19,15 +19,21 @@ namespace Veterinary.Web.Controllers
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
         private readonly ICombosHelper _combosHelper;
+        private readonly IConverterHelper _converterHelper;
+        private readonly IImageHelper _imageHelper;
 
         public OwnersController(
             DataContext context, 
             IUserHelper userHelper,
-            ICombosHelper combosHelper)
+            ICombosHelper combosHelper,
+            IConverterHelper converterHelper,
+            IImageHelper imageHelper)
         {
             _context = context;
             _userHelper = userHelper;
             _combosHelper = combosHelper;
+            _converterHelper = converterHelper;
+            _imageHelper = imageHelper;
         }
 
         // GET: Owners
@@ -205,6 +211,7 @@ namespace Veterinary.Web.Controllers
             return _context.Owners.Any(e => e.Id == id);
         }
 
+        [HttpGet]
         public async Task<IActionResult> AddPet(int? id)
         {
             if (id == null)
@@ -230,6 +237,90 @@ namespace Veterinary.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddPet(PetViewModel model)
+        {
 
+            if (ModelState.IsValid)
+            {
+                var path = string.Empty;
+
+                if (model.ImageFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(model.ImageFile);
+                }
+
+                var pet = await _converterHelper.ToPetAsync(model, path, true);
+
+                _context.Pets.Add(pet);
+
+                try
+                {                   
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction($"Details/{model.OwnerId}");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.ToString());
+                    return View(model);
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditPet(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pet = await _context.Pets
+                .Include(p => p.Owner)
+                .Include(p => p.PetType)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(_converterHelper.ToPetViewModel(pet));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditPet(PetViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var path = model.ImageUrl;
+
+                if (model.ImageFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(model.ImageFile);
+                }
+
+                var pet = await _converterHelper.ToPetAsync(model, path, false);               
+
+                try
+                {
+                    _context.Pets.Update(pet);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction($"Details/{model.OwnerId}");
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError(string.Empty, ex.ToString());
+                    return View(model);
+                }
+
+
+            }
+
+            return View(model);
+        }
     }
 }
