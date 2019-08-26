@@ -7,17 +7,14 @@
      @*<a asp-action="Create" class="btn btn-primary">Create New</a>*@
      <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus-square"></i> Create New</a>
  </p>
-<table class="table">
-    <thead>
+<table class="table table-hover table-striped">
+    <thead >
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.User.Document)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.LastName)
+                @Html.DisplayNameFor(model => model.User.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.User.Email)
@@ -41,10 +38,7 @@
                 @Html.DisplayFor(modelItem => item.User.Document)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.LastName)
+                @Html.DisplayFor(modelItem => item.User.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.User.Email)

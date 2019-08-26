@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,16 @@ namespace Veterinary.Web.Controllers
     {
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
+        private readonly ICombosHelper _combosHelper;
 
-        public OwnersController(DataContext context, IUserHelper userHelper)
+        public OwnersController(
+            DataContext context, 
+            IUserHelper userHelper,
+            ICombosHelper combosHelper)
         {
             _context = context;
             _userHelper = userHelper;
+            _combosHelper = combosHelper;
         }
 
         // GET: Owners
@@ -31,8 +37,7 @@ namespace Veterinary.Web.Controllers
                 .Include(o => o.User)
                 .Include(o=> o.Pets));
         }
-
-        // GET: Owners/Details/5
+   
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -199,5 +204,32 @@ namespace Veterinary.Web.Controllers
         {
             return _context.Owners.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> AddPet(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var owner = await _context.Owners.FindAsync(id.Value);
+
+            if (owner == null)
+            {
+                return NotFound();
+            }
+
+            var model = new PetViewModel
+            {
+                Born = DateTime.Today,
+                OwnerId = owner.Id,
+                PetTypes = _combosHelper.GetComboPetTypes()
+
+            };
+
+            return View(model);
+        }
+
+
     }
 }
