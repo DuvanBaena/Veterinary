@@ -177,7 +177,6 @@ namespace Veterinary.Web.Controllers
             return View(owner);
         }
 
-        // GET: Owners/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -186,24 +185,33 @@ namespace Veterinary.Web.Controllers
             }
 
             var owner = await _dataContext.Owners
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(o => o.User)
+                .Include(o => o.Pets)
+                .FirstOrDefaultAsync(o => o.Id == id);
             if (owner == null)
             {
                 return NotFound();
             }
 
-            return View(owner);
-        }
+            if (owner.Pets.Count > 0)
+            {
+                //TODO: Menssage
+                return RedirectToAction(nameof(Index));
+            }
 
-        // POST: Owners/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var owner = await _dataContext.Owners.FindAsync(id);
-            _dataContext.Owners.Remove(owner);
-            await _dataContext.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            await _userHelper.DeleteUserAsync(owner.User.Email);
+
+            try
+            {
+                _dataContext.Owners.Remove(owner);
+                await _dataContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.ToString());
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool OwnerExists(int id)
