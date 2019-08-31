@@ -39,58 +39,12 @@
                 </div>
             </div>
             @*<div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>*@
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>*@
         </fieldset>
     </form>
 
-
-
-    @*<dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Document)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.Document)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User.FirstName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User.LastName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.LastName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User.PhoneNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.PhoneNumber)
-        </dd>
-        <dt>
-            # Pets
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Pets.Count)
-        </dd>
-    </dl>*@
 </div>
 
 <div class="form-group row">
@@ -167,11 +121,31 @@ else
                     <td>
                         <a asp-action="EditPet" asp-route-id="@item.Id" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
                         <a asp-action="DetailsPet" asp-route-id="@item.Id" class="btn btn-info" title="Detail"><i class="fa fa-search-plus"></i></a>
-                        <a asp-action="DeletePet" asp-route-id="@item.Id" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                        @*<a asp-action="DeletePet" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#deleteDialog" title="Delete"><i class="fa fa-trash"></i></a>*@
+                        <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Delete</button>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 
+}
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Delete item
+            var item_to_delete;
+            $('.deleteItem').click((e) => {
+                item_to_delete = e.currentTarget.dataset.id;
+            });
+            $("#btnYesDelete").click(function () {
+                window.location.href = '/Owners/DeletePet/' + item_to_delete;
+            });
+        });
+    </script>
 }
