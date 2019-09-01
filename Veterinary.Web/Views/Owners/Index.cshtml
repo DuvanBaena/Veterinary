@@ -7,7 +7,7 @@
     @*<a asp-action="Create" class="btn btn-primary">Create New</a>*@
     <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus-square"></i> Create New</a>
 </p>
-<table class="table table-hover table-striped">
+<table id="dtBasicExample" class="table table-hover" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>
@@ -54,8 +54,8 @@
                     @Html.DisplayFor(modelItem => item.Pets.Count)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" title="Detail"><i class="fa fa-search-plus"></i></a>                    
+                    <button data-id="@item.Id" class="btn btn-warning EditItem"><i class="fa fa-edit"></i></button>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info EditItem" title="Detail"><i class="fa fa-search-plus"></i></a>
                     <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
@@ -66,8 +66,24 @@
 <partial name="_DeleteDialog" />
 
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+
+    }*@
+
+@section scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script type="text/javascript">
+            $(document).ready(function () {
+            $('#dtBasicExample').DataTable( {
+                 "scrollY":        "600px",
+                 "scrollCollapse": false,
+                 "paging":         true
+             } );
+           });
+       </script>
+    }
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -78,6 +94,17 @@
             });
             $("#btnYesDelete").click(function () {
                 window.location.href = '/Owners/Delete/' + item_to_delete;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Edit item
+            var item_to_Edit;
+            $('.EditItem').click((e) => {
+                item_to_Edit = e.currentTarget.dataset.id;
+                window.location.href = '/Owners/Edit/' + item_to_Edit;
             });
         });
     </script>
