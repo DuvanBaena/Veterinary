@@ -54,9 +54,9 @@
                     @Html.DisplayFor(modelItem => item.Pets.Count)
                 </td>
                 <td>
-                    <button data-id="@item.Id" class="btn btn-warning EditItem"><i class="fa fa-edit"></i></button>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info EditItem" title="Detail"><i class="fa fa-search-plus"></i></a>
-                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                    <button data-id="@item.Id" class="btn btn-warning EditItem" title="Edit"><i class="fa fa-edit"></i></button>
+                    <button data-id="@item.Id" class="btn btn-info DetailsItem" title="Detail"><i class="fa fa-search-plus"></i></button> 
+                    <button data-id="@item.Id" class="btn btn-danger deleteItem" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
         }
@@ -65,24 +65,17 @@
 
 <partial name="_DeleteDialog" />
 
-
-@*@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-
-
-    }*@
-
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
         <script type="text/javascript">
             $(document).ready(function () {
-            $('#dtBasicExample').DataTable( {
-                 "scrollY":        "600px",
-                 "scrollCollapse": false,
-                 "paging":         true
-             } );
-           });
-       </script>
+                $('#dtBasicExample').DataTable({
+                    "scrollY": "600px",
+                    "scrollCollapse": false,
+                    "paging": true
+                });
+            });
+        </script>
     }
 
     <script type="text/javascript">
@@ -105,6 +98,17 @@
             $('.EditItem').click((e) => {
                 item_to_Edit = e.currentTarget.dataset.id;
                 window.location.href = '/Owners/Edit/' + item_to_Edit;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Details item
+            var item_to_Detailst;
+            $('.DetailsItem').click((e) => {
+                item_to_Details = e.currentTarget.dataset.id;
+                window.location.href = '/Owners/Details/' + item_to_Details;
             });
         });
     </script>

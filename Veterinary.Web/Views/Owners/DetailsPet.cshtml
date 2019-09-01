@@ -3,12 +3,8 @@
     ViewData["Title"] = "DetailsPet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Pet</h2>
-
 <div>
-    <h4>Details</h4>
-    <hr />
+
     <div class="row">
         <div class="col-md-4">
             <dl class="dl-horizontal">
@@ -52,13 +48,17 @@
         </div>
     </div>
 </div>
-<div>
-    <a asp-action="EditPet" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
-    <a asp-action="AddHistory" asp-route-id="@Model.Id" class="btn btn-primary">Add History</a>
-    <a asp-action="Details" asp-route-id="@Model.Owner.Id" class="btn btn-success">Back to Owner</a>
-</div>
-<h4>History</h4>
+
+    <div id="BtnRight">
+        <button data-id="@Model.Id" class="btn btn-warning EditPetItem" title="Edit"><i class="fa fa-edit"></i></button>
+        <button data-id="@Model.Id" class="btn btn-primary AddHistoryItem" title="Create"><i class="fa fa-plus"></i></button>
+        <button data-id="@Model.Owner.Id" class="btn btn-success DetailsPetItem" title="Return"><i class="fa fa-undo"></i></button>
+    </div>
+
 <hr />
+<div class="alert alert-primary" role="alert">
+    History!
+</div>
 @if (Model.Histories.Count == 0)
 {
     <h5>Not histories added yet.</h5>
@@ -99,7 +99,7 @@ else
                     <td>
                         @Html.DisplayFor(modelItem => item.Remarks)
                     </td>
-                    <td>                       
+                    <td>
                         <button data-id="@item.Id" class="btn btn-warning EditItem" title="Edit"><i class="fa fa-edit"></i></button>
                         <button data-id="@item.Id" class="btn btn-danger deleteItem" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                     </td>
@@ -135,6 +135,39 @@ else
             $('.EditItem').click((e) => {
                 item_to_Edit = e.currentTarget.dataset.id;
                 window.location.href = '/Owners/EditHistory/' + item_to_Edit;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // EditPet item
+            var item_to_Edit;
+            $('.EditPetItem').click((e) => {
+                item_to_Edit = e.currentTarget.dataset.id;
+                window.location.href = '/Owners/EditPet/' + item_to_Edit;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Add History item
+            var item_to_AddHistory;
+            $('.AddHistoryItem').click((e) => {
+                item_to_AddHistory = e.currentTarget.dataset.id;
+                window.location.href = '/Owners/AddHistory/' + item_to_AddHistory;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Return DetailsPet
+            var item_to_DetailsPet;
+            $('.DetailsPetItem').click((e) => {
+                item_to_DetailsPet = e.currentTarget.dataset.id;
+                window.location.href = '/Owners/Details/' + item_to_DetailsPet;
             });
         });
     </script>

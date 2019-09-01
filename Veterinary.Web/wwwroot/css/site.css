@@ -36,6 +36,16 @@ body {
     }
 }*/
 
+#BtnRight {
+    text-align: right;    
+    width: 94%;
+}
+
+
+
+
+
+
 
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
