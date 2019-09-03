@@ -53,10 +53,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Pets.Count)
                 </td>
-                <td>
-                    <button data-id="@item.Id" class="btn btn-warning EditItem" title="Edit"><i class="fa fa-edit"></i></button>
-                    <button data-id="@item.Id" class="btn btn-info DetailsItem" title="Detail"><i class="fa fa-search-plus"></i></button> 
-                    <button data-id="@item.Id" class="btn btn-danger deleteItem" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                <td>                   
+                    <button class="btn btn-warning EditItem" id="EditItem" onclick=EditItem(@item.Id) title="Edit"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-info" id="DetailsItem" onclick=DetailsItem(@item.Id) title="Detail"><i class="fa fa-search-plus"></i></button>
+                    <button class="btn btn-danger " title="Delete" id="deleteItem" onclick=deleteItem(@item.Id) data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
         }
@@ -67,49 +67,14 @@
 
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    <script type="text/javascript" src="~/js/site.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
-                    "scrollY": "600px",
-                    "scrollCollapse": false,
+                    "scrollY": "800px",
+                    "scrollCollapse": true,
                     "paging": true
                 });
             });
         </script>
     }
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Delete item
-            var item_to_delete;
-            $('.deleteItem').click((e) => {
-                item_to_delete = e.currentTarget.dataset.id;
-            });
-            $("#btnYesDelete").click(function () {
-                window.location.href = '/Owners/Delete/' + item_to_delete;
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Edit item
-            var item_to_Edit;
-            $('.EditItem').click((e) => {
-                item_to_Edit = e.currentTarget.dataset.id;
-                window.location.href = '/Owners/Edit/' + item_to_Edit;
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Details item
-            var item_to_Detailst;
-            $('.DetailsItem').click((e) => {
-                item_to_Details = e.currentTarget.dataset.id;
-                window.location.href = '/Owners/Details/' + item_to_Details;
-            });
-        });
-    </script>
-}

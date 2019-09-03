@@ -58,6 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Release Note\" />
     <Folder Include="wwwroot\images\Pets\" />
   </ItemGroup>
 
