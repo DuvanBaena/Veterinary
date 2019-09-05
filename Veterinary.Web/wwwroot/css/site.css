@@ -42,7 +42,15 @@ body {
 }
 
 
+.modal-header .avatar {
+    width:100px;
+    height: 100px;
+    border-radius:50%;
+    position:absolute;
+    top: -30%;
+    left: calc(50% - 50px);
 
+}
 
 
 
