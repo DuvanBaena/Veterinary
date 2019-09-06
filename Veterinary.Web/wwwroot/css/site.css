@@ -47,12 +47,33 @@ body {
     height: 100px;
     border-radius:50%;
     position:absolute;
-    top: -30%;
+    top: -50%;
     left: calc(50% - 50px);
 
 }
 
+.modal-dialog {
+    top: 40px;
+}
 
+.modal-footer {
+    padding: 5px;
+}
+
+.modal-footer .btn {
+    min-width: 3em;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+    width: 90px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.modal-body {
+    padding: 7px;
+}
 
 
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
