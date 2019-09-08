@@ -1,15 +1,31 @@
 ﻿
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
+//function signUp() {
 
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
+//    const signUpButton = document.getElementById('signUp');
+//    signUpButton.addEventListener('click', () => {
+//    container.classList.add("right-panel-active");
+//    });
+//    //$('#signUp').click((e) => {
+//    //    container.classList.add("right-panel-active");
+//    //});
 
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
+//    //$('#signIn').click((e) => {
+//    //    container.classList.remove("right-panel-active");
+//    //});
+
+//}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function deleteItem(Id) {
     var item_to_delete = Id;
