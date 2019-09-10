@@ -117,20 +117,15 @@ function BtnCreate() {
                     $("#Password").css("border-color", "lightgrey");
                 });
                 return false;
-            }      
+            }  
         
-            return false;
-        }
+            toastr["success"]("Registro guardado exitosamente!", "Felicitaciones");
+        } 
 
+    else {     
 
-    else {
-      
-        toastr.error("La complejidad de contraseña son minimo 6 caracteres", "alerta!").sleep(1000);
-        Command: toastr["success"]("Registro guardado exitosamente!", "Felicitaciones");
         return false; 
     }
-
-
 }
 
 
