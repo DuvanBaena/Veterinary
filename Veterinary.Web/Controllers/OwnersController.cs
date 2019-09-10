@@ -148,7 +148,9 @@ namespace Veterinary.Web.Controllers
                 FirstName = owner.User.FirstName,
                 Id = owner.Id,
                 LastName = owner.User.LastName,
-                PhoneNumber = owner.User.PhoneNumber
+                PhoneNumber = owner.User.PhoneNumber,
+                BusinessName = owner.User.BusinessName,
+                LandlinePhone = owner.User.LandlinePhone,
             };
 
             return View(model);
@@ -169,6 +171,8 @@ namespace Veterinary.Web.Controllers
                 owner.User.LastName = model.LastName;
                 owner.User.Address = model.Address;
                 owner.User.PhoneNumber = model.PhoneNumber;
+                owner.User.BusinessName = model.BusinessName;
+                owner.User.LandlinePhone = model.LandlinePhone;
 
                 try
                 {

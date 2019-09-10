@@ -1,33 +1,38 @@
 ﻿@model Veterinary.Web.Models.EditUserViewModel
 
-
-
 <div class="form-group">
     <label asp-for="Document" class="control-label"></label>
-    <input asp-for="Document" class="form-control" />
-    <span asp-validation-for="Document" class="text-danger"></span>
+    <input asp-for="Document" class="form-control" id="Document"  placeholder="Cédula ó Nit" />
+    @*<span asp-validation-for="Document" class="text-danger"></span>*@
 </div>
-
+<div class="form-group">
+    <label asp-for="BusinessName" class="control-label"></label>
+    <input asp-for="BusinessName" class="form-control" placeholder="Business Name" />
+    @*<span asp-validation-for="BusinessName" class="text-danger"></span>*@
+</div>
 <div class="form-group">
     <label asp-for="FirstName" class="control-label"></label>
-    <input asp-for="FirstName" class="form-control" />
-    <span asp-validation-for="FirstName" class="text-danger"></span>
+    <input asp-for="FirstName" class="form-control" id="FirstName"  placeholder="Firts Name" />
+    @*<span asp-validation-for="FirstName" class="text-danger"></span>*@
 </div>
-
 <div class="form-group">
     <label asp-for="LastName" class="control-label"></label>
-    <input asp-for="LastName" class="form-control" />
-    <span asp-validation-for="LastName" class="text-danger"></span>
+    <input asp-for="LastName" class="form-control" id="LastName" placeholder="Last Name" />
+    @*<span asp-validation-for="LastName" class="text-danger"></span>*@
 </div>
-
 <div class="form-group">
     <label asp-for="Address" class="control-label"></label>
-    <input asp-for="Address" class="form-control" />
-    <span asp-validation-for="Address" class="text-danger"></span>
+    <input asp-for="Address" class="form-control" placeholder="Address" />
+    @*<span asp-validation-for="Address" class="text-danger"></span>*@
 </div>
-
 <div class="form-group">
     <label asp-for="PhoneNumber" class="control-label"></label>
-    <input asp-for="PhoneNumber" class="form-control" />
-    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+    @*<span asp-validation-for="PhoneNumber" class="text-danger"></span>*@
 </div>
+<div class="form-group">
+    <label asp-for="LandlinePhone" class="control-label"></label>
+    <input asp-for="LandlinePhone" class="form-control" placeholder="Landline Phone" />
+    @*<span asp-validation-for="LandlinePhone" class="text-danger"></span>*@
+</div>
+

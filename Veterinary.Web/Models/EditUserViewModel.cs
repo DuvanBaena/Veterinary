@@ -31,6 +31,13 @@ namespace Veterinary.Web.Models
         [Display(Name = "Phone Number")]
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         public string PhoneNumber { get; set; }
+
+        [Display(Name = "Business Name")]
+        public string BusinessName { get; set; }
+
+        [Display(Name = "Landline Phone")]
+        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string LandlinePhone { get; set; }
     }
 }
 
