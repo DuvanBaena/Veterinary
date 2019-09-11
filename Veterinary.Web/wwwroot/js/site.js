@@ -1,10 +1,10 @@
 ﻿
 function BtnCreate() {
 
-    var nombre = $("#Username").val();
-    var Document = $("#Document").val();
-    var FirstName = $("#FirstName").val();
-    var LastName = $("#LastName").val();
+    const nombre = $("#Username").val();
+    const Document = $("#Document").val();
+    const FirstName = $("#FirstName").val();
+    const LastName = $("#LastName").val();
     const Password = $("#Password").val();
     const PasswordConfirm = $("#PasswordConfirm").val();
 
@@ -116,6 +116,7 @@ function BtnCreate() {
                 $("#Password").keyup(function () {
                     $("#Password").css("border-color", "lightgrey");
                 });
+
                 return false;
             }  
         
