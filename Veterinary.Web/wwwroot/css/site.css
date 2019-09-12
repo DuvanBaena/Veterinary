@@ -38,7 +38,7 @@ body {
 
 #BtnRight {
     text-align: right;    
-    width: 89%;
+    width: 94%;
 }
 
 
@@ -118,13 +118,11 @@ body {
 }
 
 #advanced-search-form .btn {
-    width: 26%;
+    width: 10%;
     margin: 20px auto 0;
     text-align: center;
     outline: none;
 }
-
-
 
 .container #log-in-form .form-group {
     float: left;
@@ -146,20 +144,12 @@ body {
     padding: 13px 32px;
 }
 
-.loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);
-    opacity: .8;
+.table img {
+    border-radius: 90%;
+    vertical-align: middle;
+    height: 80px;
+    width: 80px;
 }
-
-
-
-
 
 
 
