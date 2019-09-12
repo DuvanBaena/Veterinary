@@ -54,7 +54,7 @@
                     @Html.DisplayFor(modelItem => item.Pets.Count)
                 </td>
                 <td>                   
-                    <button class="btn btn-warning EditItem" id="EditItem" onclick=EditItem(@item.Id) title="Edit"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-warning" id="EditItem" onclick=EditItem(@item.Id) title="Edit"><i class="fa fa-edit"></i></button>
                     <button class="btn btn-info" id="DetailsItem" onclick=DetailsItem(@item.Id) title="Detail"><i class="fa fa-search-plus"></i></button>
                     <button class="btn btn-danger " title="Delete" id="deleteItem" onclick=deleteItem(@item.Id) data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                 </td>

@@ -4,36 +4,31 @@
     ViewData["Title"] = "Details";
 }
 
-<div>
-
-    <hr />
+<div class="container" id="advanced-search-form">
     <form>
         <fieldset disabled>
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group">
                     <label for="inputAddress2">@Html.DisplayNameFor(model => model.User.FirstName)</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.User.FirstName)">
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group">
                     <label for="inputAddress2">@Html.DisplayNameFor(model => model.User.LastName)</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.User.LastName)">
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group">
                     <label for="inputAddress2">@Html.DisplayNameFor(model => model.User.PhoneNumber)</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.User.PhoneNumber)">
                 </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group">
                     <label for="inputAddress2">@Html.DisplayNameFor(model => model.User.Address)</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.User.Address)">
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group">
                     <label for="inputAddress2">@Html.DisplayNameFor(model => model.User.Email)</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.User.Email)">
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group">
                     <label for="inputAddress2">Nro Pets</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Pets.Count)">
                 </div>
@@ -46,11 +41,16 @@
     </form>
 </div>
 
+<div class="clearfix"></div>
+<div class="text-center">
+
+</div>
+
 <div class="form-group">
-    <div id="BtnRight">        
-        <button data-id="@Model.Id" class="btn btn-warning EditOwnerItem" title="Edit"><i class="fa fa-edit"></i></button>
-        <button data-id="@Model.Id" class="btn btn-primary AddpetItem" title="Create"><i class="fa fa-plus"></i></button>
-        <button class="btn btn-success IndexOwnerItem" title="Return"><i class="fa fa-undo"></i></button>
+    <div id="BtnRight">
+        <button class="btn btn-warning  btn-responsive" onclick=EditItem(@Model.Id) title="Edit" id="EditOwnerDetatil"> <i class="fa fa-edit"></i></button>
+        <button class="btn btn-primary  btn-responsive" onclick=AddpetItem(@Model.Id) title="Create" id="AddpetItem"> <i class="fa fa-plus"></i> </button>
+        <button class="btn btn-success  btn-responsive" onclick=DetailReturnIndex() title="Return" id="DetailReturnIndex"> <i class="fa fa-undo"></i></button>
     </div>
 </div>
 
@@ -118,9 +118,10 @@ else
                         @Html.DisplayFor(modelItem => item.Remarks)
                     </td>
                     <td>
-                        <button data-id="@item.Id" class="btn btn-warning EditItem" title="Edit"><i class="fa fa-edit"></i></button>
-                        <a asp-action="DetailsPet" asp-route-id="@item.Id" class="btn btn-info" title="Detail"><i class="fa fa-search-plus"></i></a>
-                        <button data-id="@item.Id" class="btn btn-danger deleteItem" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                        <button class="btn btn-warning btn-responsive" onclick=EditPetItem(@item.Id) title="Edit" id="EditPetItem"> <i class="fa fa-edit"></i></button>
+                        <button class="btn btn-info  btn-responsive" onclick=DetailPetItem(@item.Id) title="Detail" id="DetailPetItem"> <i class="fa fa-edit"></i></button>
+                        <button class="btn btn-danger  btn-responsive" onclick=DeletePetItem(@item.Id) title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>                                             
+
                     </td>
                 </tr>
             }
@@ -133,59 +134,7 @@ else
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Delete item
-            var item_to_delete;
-            $('.deleteItem').click((e) => {
-                item_to_delete = e.currentTarget.dataset.id;
-            });
-            $("#btnYesDelete").click(function () {
-                window.location.href = '/Owners/DeletePet/' + item_to_delete;
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // EditPet item
-            var item_to_Edit;
-            $('.EditItem').click((e) => {
-                item_to_Edit = e.currentTarget.dataset.id;
-                window.location.href = '/Owners/EditPet/' + item_to_Edit;
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // EditOwner item
-            var item_to_EditOwner;
-            $('.EditOwnerItem').click((e) => {
-                item_to_EditOwner = e.currentTarget.dataset.id;
-                window.location.href = '/Owners/Edit/' + item_to_EditOwner;
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // AddPet item
-            var item_to_Addpet;
-            $('.AddpetItem').click((e) => {
-                item_to_Addpet = e.currentTarget.dataset.id;
-                window.location.href = '/Owners/AddPet/' + item_to_Addpet;
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Return Index           
-            $('.IndexOwnerItem').click((e) => {               
-                window.location.href = '/Owners/Index/';
-            });
-        });
-    </script>
+    <script src="~/js/site.js"></script> 
 }
 
 

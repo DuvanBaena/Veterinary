@@ -12,27 +12,13 @@
 
         <partial name="_User" />
 
-        <div id="log-in-form">
-            <div class="form-group form-group-btn">
-                <button type="submit" class="btn btn-success btn-lg">Log In</button>
-                <button class="btn btn-primary  btn-lg btn-responsive" title="Save"><i class="fa fa-save"></i></button>
-                <button class="btn btn-success" title="Return"><i class="fa fa-undo"></i></button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        @*<div class="clearfix"></div>
-        <button type="submit" class="btn btn-info btn-lg btn-responsive" id="search"> <i class="fa fa-save"></i> Create</button>
-        <button class="btn btn-primary  btn-lg btn-responsive" title="Save"><i class="fa fa-save"></i></button>
-        <button class="btn btn-success" title="Return"><i class="fa fa-undo"></i></button>*@
+        <div class="clearfix"></div>
+        <div class="text-center">
+         <button  class="btn btn-warning btn-lg btn-responsive" title="Edit"> <i class="fa fa-save"></i> Edit</button> 
+         <button  class="btn btn-success btn-lg btn-responsive" title="Return" ><i class="fa fa-undo"></i> Back to List</button> 
+        </div> 
     </form>
 </div>
-
-
-
-
-
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -129,6 +129,7 @@ function BtnCreate() {
     }
 }
 
+//Crud Controller Owner/Action
 
 function deleteItem(Id) {
     var item_to_delete = Id;
@@ -136,7 +137,7 @@ function deleteItem(Id) {
         item_to_delete = e.currentTarget.dataset.id;
     });
     $("#btnYesDelete").click(function () {
-        window.location.href = '/Owners/Delete/' + item_to_delete;
+        location.href = '/Owners/Delete/' + item_to_delete;
     });
 }
 
@@ -154,3 +155,38 @@ function DetailsItem(Id) {
     });
 }
 
+function AddpetItem(Id) {
+    $(document).ready(function () {
+        var item_to_Addpet = Id;
+        location.href = '/Owners/AddPet/' + item_to_Addpet;
+    });
+}
+function DetailReturnIndex() {
+    $(document).ready(function () {           
+        location.href = '/Owners/Index/';
+    });
+}
+
+function EditPetItem(Id) {
+    $(document).ready(function () {
+        var item_to_EditPet = Id;
+        location.href = '/Owners/EditPet/' + item_to_EditPet;
+    });
+}
+
+function DetailPetItem(Id) {
+    $(document).ready(function () {
+        var item_to_DetailPet = Id;
+        location.href = '/Owners/DetailsPet/' + item_to_DetailPet;
+    });
+}
+
+function DeletePetItem(Id) {
+    var item_to_deletePet = Id;
+    $('#deleteItem').click((e) => {
+        item_to_delete = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        location.href = '/Owners/DeletePet/' + item_to_deletePet;
+    });
+}

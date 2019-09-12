@@ -88,6 +88,8 @@ namespace Veterinary.Web.Controllers
                     LastName = model.LastName,
                     PhoneNumber = model.PhoneNumber,
                     UserName = model.Username,
+                    BusinessName = model.BusinessName,
+                    LandlinePhone = model.LandlinePhone,
 
                 };
 
