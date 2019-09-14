@@ -14,12 +14,14 @@
 
         <div class="clearfix"></div>
         <div class="text-center">
-         <button  class="btn btn-warning btn-lg btn-responsive" title="Edit"> <i class="fa fa-save"></i></button> 
-         <button  class="btn btn-success btn-lg btn-responsive" title="Return" ><i class="fa fa-undo"></i></button> 
-        </div> 
+            <button type="submit" class="btn btn-warning btn-lg btn-responsive" onclick=EditOwnerItems() title="Edit"> <i class="fa fa-save"></i></button>
+            <button class="btn btn-success btn-lg btn-responsive" onclick=DetailReturnIndex() title="Return"><i class="fa fa-undo"></i></button>
+        </div>
     </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script type="text/javascript" src="~/js/site.js"></script>
+    }
 }

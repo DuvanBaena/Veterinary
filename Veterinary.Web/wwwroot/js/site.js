@@ -1,4 +1,66 @@
 ﻿
+function EditOwnerItems() {
+
+    const Document = $("#Document").val();
+    const FirstName = $("#FirstName").val();
+    const LastName = $("#LastName").val();
+
+    toastr.options = {
+        "debug": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    if ($.trim(Document) === "") {
+        $("#Document").css('border-color', 'Red');
+        toastr.error("El campo documento es obligatorio", "alerta!");
+        $("#Document").focus();
+        $("#Document").keydown(function () {
+            $("#Document").css("border-color", "lightgrey");
+        });
+        $("#Username").keyup(function () {
+            $("#Username").css("border-color", "lightgrey");
+        });
+        return false;
+    } else if ($.trim(FirstName) === "") {
+        $("#FirstName").css('border-color', 'Red');
+        toastr.error("El campo Nombre es obligatorio", "alerta!");
+        $("#FirstName").focus();
+        $("#FirstName").keydown(function () {
+            $("#FirstName").css("border-color", "lightgrey");
+        });
+        $("#FirstName").keyup(function () {
+            $("#FirstName").css("border-color", "lightgrey");
+        });
+        return false;
+    } else if ($.trim(LastName) === "") {
+        $("#LastName").css('border-color', 'Red');
+        toastr.error("El campo Apellido es obligatorio", "alerta!");
+        $("#LastName").focus();
+        $("#LastName").keydown(function () {
+            $("#LastName").css("border-color", "lightgrey");
+        });
+        $("#LastName").keyup(function () {
+            $("#LastName").css("border-color", "lightgrey");
+        });
+        return false;
+    }
+
+
+}
+
+
+
 function BtnCreate() {
     
     const nombre = $("#Username").val();
@@ -120,7 +182,8 @@ function BtnCreate() {
                 return false;
             }  
         
-            toastr["success"]("Registro guardado exitosamente!", "Felicitaciones");
+             toastr["success"]("Registro guardado exitosamente!", "Felicitaciones");    
+    
         } 
 
     else {     

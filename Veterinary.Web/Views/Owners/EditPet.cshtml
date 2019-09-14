@@ -12,6 +12,15 @@
             <input type="hidden" asp-for="OwnerId" />
             <input type="hidden" asp-for="ImageUrl" />
 
+            <div class="col-12 col-md-12 text-center">
+
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:300px;height:300px;max-height: 100%; width: auto;" />
+
+                }
+            </div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" id="Name" placeholder="Nombre de la Mascosta" />
@@ -47,15 +56,8 @@
                 <textarea asp-for="Remarks" class="form-control"></textarea>
             </div>
 
-            <div class="form-group">
 
-                @if (!string.IsNullOrEmpty(Model.ImageUrl))
-                {
-                    <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:300px;height:300px;max-height: 100%; width: auto;" />
 
-                }
-            </div>
-    
 
             <div class="clearfix"></div>
             <div class="text-center">

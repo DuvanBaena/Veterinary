@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Helpers;
@@ -76,6 +77,8 @@ namespace Veterinary.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AddUserViewModel model)
         {
+            Thread.Sleep(4000);
+
             if (ModelState.IsValid)
             {
                 var user = new User
