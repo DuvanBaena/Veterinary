@@ -59,8 +59,6 @@ function EditOwnerItems() {
 
 }
 
-
-
 function BtnCreate() {
     
     const nombre = $("#Username").val();
@@ -236,15 +234,14 @@ function DetailReturnIndex() {
 
 function EditPetItem(Id) {
 
-    const item_to_EditPet = Id;  
+    var item_to_EditPet = Id;  
 
-    if (Id !== null) {
+    if (Id !== undefined) {
         $(document).ready(function () {
             location.href = '/Owners/EditPet/' + item_to_EditPet;
         });
     } else {
-
-        toastr["error"]("El campo Nombre de mascota obligatorios", "Alerta");
+        toastr["warning"]("La variabe enviada esta llegando undefined", "Alerta");
     }
 }
 
@@ -272,7 +269,6 @@ function DeletePetItem(Id) {
     });
 }
 
-
 // validation AddPet
 
 function CreateAddPet() {  
@@ -294,7 +290,8 @@ function CreateAddPet() {
          
     const name = document.getElementById('Name').value;
     const born = document.getElementById('Born').value;
-    const petType = document.getElementById('PetTypeId').value;    
+    const petType = document.getElementById('PetTypeId').value;
+    const resul = parseInt(petType);
 
     if (name === '') {
         $("#Name").css('border-color', 'Red');
@@ -331,14 +328,44 @@ function CreateAddPet() {
         return false;
     }
 
-    //else if (petType !== 0) {       
-    //    toastr["error"]("Seleccion de tipo de mascota es obligatoria", "Alerta");
-    //    $("#petType").focus();
-    //    return false;
-    //}
+    else if (resul === 0) {       
+        toastr["error"]("Seleccion de tipo de mascota es obligatoria", "Alerta");
+        $("#petType").focus();
+        return false;
+    }
 
     else {
-        //toastr["error"]("estomos en el NO", "Alerta");
+        toastr["success"]("Registro exitoso!", "Felicitaciones");   
     }
 
 }
+
+
+// Histories
+
+function AddHistoryItem(Id) {
+    var item_to_AddHistory = Id;
+    $(document).ready(function () {
+        location.href = '/Owners/AddHistory/' + item_to_AddHistory;
+    });
+}
+
+function EditHistory(Id) {
+    var item_to_AddHistory = Id;
+    $(document).ready(function () {
+        location.href = '/Owners/EditHistory/' + item_to_AddHistory;
+    });
+}
+
+
+function DeleteHistory(Id) {
+    var item_to_AddHistory = Id;
+    $('#deleteItem').click((e) => {
+        item_to_delete = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        location.href = '/Owners/DeleteHistory/' + item_to_AddHistory;
+    });
+}
+
+

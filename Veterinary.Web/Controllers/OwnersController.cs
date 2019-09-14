@@ -265,6 +265,7 @@ namespace Veterinary.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPet(PetViewModel model)
         {
+            Thread.Sleep(4000);
 
             if (ModelState.IsValid)
             {
@@ -319,6 +320,8 @@ namespace Veterinary.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> EditPet(PetViewModel model)
         {
+            Thread.Sleep(4000);
+
             if (ModelState.IsValid)
             {
                 var path = model.ImageUrl;
