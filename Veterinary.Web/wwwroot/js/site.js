@@ -215,15 +215,15 @@ function EditItem(Id) {
 }
 
 function DetailsItem(Id) {
-    $(document).ready(function () {       
-        var item_to_Details = Id;    
-        location.href = '/Owners/Details/' + item_to_Details;       
+    var item_to_Details = Id;   
+    $(document).ready(function () {     
+       location.href = '/Owners/Details/' + item_to_Details;       
     });
 }
 
 function AddpetItem(Id) {
-    $(document).ready(function () {
-        var item_to_Addpet = Id;
+    var item_to_Addpet = Id;
+    $(document).ready(function () {       
         location.href = '/Owners/AddPet/' + item_to_Addpet;
     });
 }
@@ -249,15 +249,15 @@ function EditPetItem(Id) {
 }
 
 function DetailPetItem(Id) {
-    $(document).ready(function () {
-        var item_to_DetailPet = Id;
+    var item_to_DetailPet = Id;
+    $(document).ready(function () {        
         location.href = '/Owners/DetailsPet/' + item_to_DetailPet;
     });
 }
 
 function OwnerDetailItem(Id) {
-    $(document).ready(function () {
-        var item_to_DetailPet = Id;
+    var item_to_DetailPet = Id;
+    $(document).ready(function () {        
         location.href = '/Owners/Details/' + item_to_DetailPet;
     });
 }
