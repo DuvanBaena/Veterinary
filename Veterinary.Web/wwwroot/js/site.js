@@ -389,3 +389,80 @@ function DeleteHistory(Id) {
 }
 
 
+//PetType
+
+function deletePetTypeItem(Id) {
+    var item_to_deletePetType = Id;
+    $('#deleteItem').click((e) => {
+        item_to_delete = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        window.location.href = '/PetTypes/Delete/' + item_to_deletePetType;
+    });
+
+}
+
+
+function EditPetTypeItem(Id) {
+    var item_to_EditPetType = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/PetTypes/Edit/' + item_to_EditPetType;
+        });
+    }
+}
+
+
+function DetailPetTypeItem(Id) {
+    var item_to_DetailPetType = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/PetTypes/Details/' + item_to_DetailPetType;
+        });
+    }
+}
+
+
+function CreatePetTypeItem() {
+    $(document).ready(function () {
+        location.href = '/PetTypes/Create/';
+    });
+}
+
+//ServiceType
+
+function CreateServiceTypeItem() {
+    $(document).ready(function () {
+        location.href = '/ServiceTypes/Create/';
+    });
+}
+
+function EditServiceTypeItem(Id) {
+    var item_to_EditPetType = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/ServiceTypes/Edit/' + item_to_EditPetType;
+        });
+    }
+}
+
+function DetailServiceTypeItem(Id) {
+    var item_to_DetailPetType = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/ServiceTypes/Details/' + item_to_DetailPetType;
+        });
+    }
+}
+
+function deleteServiceTypeItem(Id) {
+    var item_to_deletePetType = Id;
+    $('#deleteItem').click((e) => {
+        item_to_delete = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        window.location.href = '/ServiceTypes/Delete/' + item_to_deletePetType;
+    });
+
+}
+

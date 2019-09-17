@@ -5,32 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Owners/Index">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Html.DisplayNameFor(model => model.Name)</li>
+    </ol>
+</nav>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <button type="submit" class="btn btn-primary btn-lg btn-responsive" onclick=CreateServiceTypeItem() id="search" title="Create"> <i class="fa fa-plus-square"></i></button>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Creación de Tipos de Servicio</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive table-image">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="text-center"> @Html.DisplayNameFor(model => model.Name)</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.Name)</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning btn-responsive" onclick=EditServiceTypeItem(@item.Id) title="Edit"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-primary btn-responsive" btn-responsive" onclick=DetailServiceTypeItem(@item.Id) title="Return"><i class="fa fa-search-plus"></i></button>
+                                <button class="btn btn-danger btn-responsive" onclick=deleteServiceTypeItem(@item.Id) title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script type="text/javascript" src="~/js/site.js"></script>
+    }
+
 }
-    </tbody>
-</table>
+
