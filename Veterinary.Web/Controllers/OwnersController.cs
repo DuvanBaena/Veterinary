@@ -77,10 +77,11 @@ namespace Veterinary.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AddUserViewModel model)
         {
-            Thread.Sleep(4000);
+            //Thread.Sleep(4000);
 
             if (ModelState.IsValid)
             {
+                //var result = "Fail";
                 var user = new User
                 {
 
@@ -114,21 +115,27 @@ namespace Veterinary.Web.Controllers
 
                     try
                     {
-                        await _dataContext.SaveChangesAsync();
+                        await _dataContext.SaveChangesAsync();                        
+                        //result = "Success";
                         return RedirectToAction(nameof(Index));
+
                     }
                     catch (Exception ex)
                     {
 
                         ModelState.AddModelError(string.Empty, ex.ToString());
                         return View(model);
+                       
                     }
 
+                   // return Json(result);
                 }
 
                 ModelState.AddModelError(string.Empty, response.Errors.FirstOrDefault().Description);
             }
+
             return View(model);
+           
         }
 
         public async Task<IActionResult> Edit(int? id)

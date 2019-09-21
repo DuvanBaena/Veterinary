@@ -16,7 +16,7 @@
     [AccessFailedCount]    INT                NOT NULL,
     [Document]             NVARCHAR (20)      NOT NULL,
     [FirstName]            NVARCHAR (50)      NOT NULL,
-    [LastName]             NVARCHAR (50)      NOT NULL,
+    [LastName]             NVARCHAR (50)      NULL,
     [Address]              NVARCHAR (100)     NULL,
     [BusinessName] NVARCHAR(50) NULL, 
     CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)

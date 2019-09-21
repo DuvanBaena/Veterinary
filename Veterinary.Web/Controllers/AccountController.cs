@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Helpers;
 using Veterinary.Web.Models;
+using Veterinary.Web.Models.Data;
 
 namespace Veterinary.Web.Controllers
 {
@@ -16,13 +20,16 @@ namespace Veterinary.Web.Controllers
     {
         private readonly IUserHelper _userHelper;
         private readonly IConfiguration _configuration;
+        private readonly DataContext _dataContext;
 
         public AccountController(
             IUserHelper userHelper,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            DataContext dataContext)
         {
             _userHelper = userHelper;
             _configuration = configuration;
+           _dataContext = dataContext;
         }
 
         [HttpGet]
@@ -111,7 +118,84 @@ namespace Veterinary.Web.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(AddUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await AddUserAsync(model);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "This email is already used.");
+                    return View(model);
+                }
+
+                var owner = new Owner
+                {
+                    Pets = new List<Pet>(),
+                    User = user,
+                };
+
+                try
+                {
+                    _dataContext.Owners.Add(owner);
+                    await _dataContext.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError(string.Empty, ex.ToString());
+                    return View(model);
+
+                }
+
+                var loginViewModel = new LoginViewModel
+                {
+                    Password = model.Password,
+                    RememberMe = false,
+                    Username = model.Username
+                };
+
+                var result2 = await _userHelper.LoginAsync(loginViewModel);
+
+                if (result2.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(model);
+        }
+
+        private async Task<User> AddUserAsync (AddUserViewModel model)
+        {
+            var user = new User
+            {
+                Address = model.Address,
+                Document = model.Document,
+                Email = model.Username,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                UserName = model.Username
+            };
+
+            var result = await _userHelper.AddUserAsync(user, model.Password);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            var newUser = await _userHelper.GetUserByEmailAsync(model.Username);
+            await _userHelper.AddUserToRoleAsync(newUser, "Customer");
+            return newUser;
+        }
 
     }
 

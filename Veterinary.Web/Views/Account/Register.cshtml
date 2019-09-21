@@ -1,4 +1,4 @@
-﻿@model Veterinary.Web.Models.LoginViewModel
+﻿@model Veterinary.Web.Models.AddUserViewModel
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_LoginWeb.cshtml";
@@ -7,19 +7,23 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form id="AjaxForm">
+        <form asp-action="Register">
             <h1>Create Account</h1>
-            <span>or use your email for registration</span>
-            <input type="text" id="Documento" placeholder="Documento" />
-            <input type="email" id="Email" placeholder="Email" />
-            <input type="text" placeholder="Name" />
-            <input type="password" placeholder="Password" />
-            <button asp-action="Register">Register</button>           
-            @*<button onclick="Test()">Sign Up</button>*@
+            <input asp-for="Document" type="text" placeholder="Nro Documento" />
+            <span asp-validation-for="Document" class="text-warning"></span>
+            <input asp-for="Username" type="text" placeholder="Correo Electrónico" />
+            <span asp-validation-for="Username" class="text-warning"></span>
+            <input asp-for="FirstName" type="text" placeholder="Nombre" />
+            <span asp-validation-for="FirstName" class="text-warning"></span>
+            <input asp-for="Password" type="password" placeholder="Contraseña" />
+            <span asp-validation-for="Password" class="text-warning"></span>
+            <input asp-for="PasswordConfirm" type="password" placeholder="Confirmar Contraseña" />
+            <span asp-validation-for="PasswordConfirm" class="text-warning"></span>
+            <button>Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form method="post">
+        <form>
             <div asp-validation-summary="ModelOnly"></div>
             <h1>Mercamascotas</h1>
             <div class="social-container">
@@ -28,18 +32,11 @@
                 <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
             </div>
             <span>or use your account</span>
-            <input asp-for="Username" placeholder="Email" />
-            <span asp-validation-for="Username" class="text-warning"></span>
+            <input asp-for="Username" placeholder="Email" />            
             <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-            <input asp-for="Password" type="password" placeholder="Password" />
-            <span asp-validation-for="Password" class="text-warning"></span>
-            <div class="RememberMe">
-                <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
-                <label asp-for="RememberMe">Remember Me?</label>
-                <span asp-validation-for="RememberMe" class="text-warning"></span>
-            </div>
-            <a href="#">Forgot your password?</a>
-            <button type="submit" value="Login">Sign In</button>
+            <input asp-for="Password" type="password" placeholder="Password" />          
+             <a href="#">Forgot your password?</a>
+            <button value="Login">Sign In</button>
         </form>
     </div>
     <div class="overlay-container">
@@ -62,27 +59,24 @@
 
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        <script src="~/js/ConceptFile.js"></script>
+
         <script type="text/javascript">
             const signUpButton = document.getElementById('signUp');
             const signInButton = document.getElementById('signIn');
             const container = document.getElementById('container');
 
-            signUpButton.addEventListener('click', () => {               
+            signUpButton.addEventListener('click', () => {
                 container.classList.add("right-panel-active");
-                 //location.href = "Account/Register/"
+               
             });
 
             signInButton.addEventListener('click', () => {
-                container.classList.remove("right-panel-active");               
+                container.classList.remove("right-panel-active");
+                 
             });
         </script>
-      
-
-     }
-
-
- }
+    }
+}
 
 
 

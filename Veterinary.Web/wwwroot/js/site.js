@@ -22,7 +22,7 @@ function EditOwnerItems() {
 
     const Document = $("#Document").val();
     const FirstName = $("#FirstName").val();
-    const LastName = $("#LastName").val();
+  
 
     if ($.trim(Document) === "") {
         $("#Document").css('border-color', 'Red');
@@ -46,30 +46,26 @@ function EditOwnerItems() {
             $("#FirstName").css("border-color", "lightgrey");
         });
         return false;
-    } else if ($.trim(LastName) === "") {
-        $("#LastName").css('border-color', 'Red');
-        toastr.error("El campo Apellido es obligatorio", "alerta!");
-        $("#LastName").focus();
-        $("#LastName").keydown(function () {
-            $("#LastName").css("border-color", "lightgrey");
-        });
-        $("#LastName").keyup(function () {
-            $("#LastName").css("border-color", "lightgrey");
-        });
-        return false;
-    }
+    } 
 
 
 }
 
-function BtnCreate() {
+
+
+//Crud Controller Owner/Action
+
+function CreateOwnerIndex() {
+    location.href = '/Owners/Create/';
+}
+
+function CreateOwnerItem() {
 
     toastrValidated();
 
     const nombre = $("#Username").val();
     const Document = $("#Document").val();
-    const FirstName = $("#FirstName").val();
-    const LastName = $("#LastName").val();
+    const FirstName = $("#FirstName").val();   
     const Password = $("#Password").val();
     const PasswordConfirm = $("#PasswordConfirm").val();
 
@@ -106,18 +102,7 @@ function BtnCreate() {
             $("#FirstName").css("border-color", "lightgrey");
         });
         return false;
-    } else if ($.trim(LastName) === "") {
-        $("#LastName").css('border-color', 'Red');
-        toastr.error("No ha ingresado Apellido", "alerta!");
-        $("#LastName").focus();
-        $("#LastName").keydown(function () {
-            $("#LastName").css("border-color", "lightgrey");
-        });
-        $("#LastName").keyup(function () {
-            $("#LastName").css("border-color", "lightgrey");
-        });
-        return false;
-    } else if ($.trim(Password) === "") {
+    }  else if ($.trim(Password) === "") {
         $("#Password").css('border-color', 'Red');
         toastr.error("No ha ingresado Password", "alerta!");
         $("#Password").focus();
@@ -165,21 +150,16 @@ function BtnCreate() {
             });
 
             return false;
+
+        } else {
+
+            toastr.error("Registro exitoso", "Sucess!");
         }
 
-        toastr["success"]("Registro guardado exitosamente!", "Felicitaciones");
-
-    }
-
-    else {
-
-        return false;
     }
 }
 
-//Crud Controller Owner/Action
-
-function deleteItem(Id) {
+function DeleteItem(Id) {
     var item_to_delete = Id;
     $('#deleteItem').click((e) => {
         item_to_delete = e.currentTarget.dataset.id;
@@ -317,7 +297,6 @@ function CreateAddPet() {
     }
 
 }
-
 
 // Histories
 
