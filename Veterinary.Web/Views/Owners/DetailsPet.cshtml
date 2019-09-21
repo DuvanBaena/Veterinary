@@ -42,9 +42,9 @@
 <div class="form-group">
     <div id="BtnRight">
         <div id="BtnRight">
-            <button class="btn btn-warning" onclick=EditPetItem(@Model.Id) title="Edit"><i class="fa fa-edit"></i></button>
-            <button class="btn btn-primary" onclick=AddHistoryItem(@Model.Id) title="Create"><i class="fa fa-plus"></i></button>
-            <button class="btn btn-success" onclick=DetailsItem(@Model.Owner.Id) title="Return"><i class="fa fa-undo"></i></button>
+            <button class="btn btn-warning" onclick="EditPetItem(@Model.Id)" title="Edit"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-primary" onclick="AddHistoryItem(@Model.Id)" title="Create"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-success" onclick="DetailsItem(@Model.Owner.Id)" title="Return"><i class="fa fa-undo"></i></button>
         </div>
     </div>
 </div>
@@ -81,8 +81,8 @@ else
                                 <td>@Html.DisplayFor(modelItem => item.Description)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
                                 <td class="text-center">
-                                    <button class="btn btn-warning" onclick=EditHistory(@item.Id) title="Edit"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-danger" onclick=DeleteHistory(@item.Id) title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-warning" onclick="EditHistory(@item.Id)" title="Edit"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-danger" onclick="DeleteHistory(@item.Id)" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
                         }

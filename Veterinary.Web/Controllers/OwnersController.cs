@@ -77,7 +77,7 @@ namespace Veterinary.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AddUserViewModel model)
         {
-            //Thread.Sleep(4000);
+            Thread.Sleep(4000);
 
             if (ModelState.IsValid)
             {

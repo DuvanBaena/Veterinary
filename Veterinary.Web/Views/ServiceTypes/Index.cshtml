@@ -37,9 +37,9 @@
                             <td class="text-center">@Html.DisplayFor(modelItem => item.Name)</td>
 
                             <td class="text-center">
-                                <button class="btn btn-warning btn-responsive" onclick=EditServiceTypeItem(@item.Id) title="Edit"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-primary btn-responsive" btn-responsive" onclick=DetailServiceTypeItem(@item.Id) title="Return"><i class="fa fa-search-plus"></i></button>
-                                <button class="btn btn-danger btn-responsive" onclick=deleteServiceTypeItem(@item.Id) title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-warning btn-responsive" onclick="EditServiceTypeItem(@item.Id)" title="Edit"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-primary btn-responsive" btn-responsive" onclick="DetailServiceTypeItem(@item.Id)" title="Return"><i class="fa fa-search-plus"></i></button>
+                                <button class="btn btn-danger btn-responsive" onclick="deleteServiceTypeItem(@item.Id)" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     }

@@ -7,15 +7,14 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form id="AjaxForm">
+        <form action="#">
             <h1>Create Account</h1>
-            <span>or use your email for registration</span>
-            <input type="text" id="Documento" placeholder="Documento" />
-            <input type="email" id="Email" placeholder="Email" />
-            <input type="text" placeholder="Name" />
-            <input type="password" placeholder="Password" />
-            <button asp-action="Register">Register</button>           
-            @*<button onclick="Test()">Sign Up</button>*@
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <button asp-action="Register">Register</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
@@ -61,20 +60,21 @@
 </div>
 
 @section scripts{
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        <script src="~/js/ConceptFile.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");        
         <script type="text/javascript">
             const signUpButton = document.getElementById('signUp');
             const signInButton = document.getElementById('signIn');
             const container = document.getElementById('container');
 
-            signUpButton.addEventListener('click', () => {               
-                container.classList.add("right-panel-active");
-                 //location.href = "Account/Register/"
-            });
+            signUpButton.addEventListener("click", function () {
 
+                  container.classList.add("right-panel-active");
+                  // var url = "Account/Register/"; 
+                   window.location.href = url;   
+            });
+            
             signInButton.addEventListener('click', () => {
-                container.classList.remove("right-panel-active");               
+                container.classList.remove("right-panel-active");                  
             });
         </script>
       

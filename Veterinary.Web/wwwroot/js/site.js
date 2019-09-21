@@ -153,7 +153,7 @@ function CreateOwnerItem() {
 
         } else {
 
-            toastr.error("Registro exitoso", "Sucess!");
+            toastr.success("Registro exitoso", "Sucess!");
         }
 
     }

@@ -42,9 +42,9 @@
 </div>
 <div class="form-group">
     <div id="BtnRight">
-        <button class="btn btn-warning  btn-responsive" onclick=EditItem(@Model.Id) title="Edit" id="EditOwnerDetatil"> <i class="fa fa-edit"></i></button>
-        <button class="btn btn-primary  btn-responsive" onclick=AddpetItem(@Model.Id) title="Create" id="AddpetItem"> <i class="fa fa-plus"></i> </button>
-        <button class="btn btn-success  btn-responsive" onclick=DetailReturnIndex() title="Return" id="DetailReturnIndex"> <i class="fa fa-undo"></i></button>
+        <button class="btn btn-warning  btn-responsive" onclick="EditItem(@Model.Id)" title="Edit" id="EditOwnerDetatil"> <i class="fa fa-edit"></i></button>
+        <button class="btn btn-primary  btn-responsive" onclick="AddpetItem(@Model.Id)" title="Create" id="AddpetItem"> <i class="fa fa-plus"></i> </button>
+        <button class="btn btn-success  btn-responsive" onclick="DetailReturnIndex()" title="Return" id="DetailReturnIndex"> <i class="fa fa-undo"></i></button>
     </div>
 </div>
 
@@ -90,9 +90,9 @@ else
                             <td>@Html.DisplayFor(modelItem => item.Histories.Count)</td>
                             <td>@Html.DisplayFor(modelItem => item.Remarks)</td>                       
                             <td class="text-center">
-                                <button class="btn btn-warning btn-responsive" onclick=EditPetItem(@item.Id) title="Edit" id="EditPetItem"> <i class="fa fa-edit"></i></button>
-                                <button class="btn btn-info  btn-responsive" onclick=DetailPetItem(@item.Id) title="Detail" id="DetailPetItem"> <i class="fa fa-edit"></i></button>
-                                <button class="btn btn-danger  btn-responsive" onclick=DeletePetItem(@item.Id) title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-warning btn-responsive" onclick="EditPetItem(@item.Id)" title="Edit" id="EditPetItem"> <i class="fa fa-edit"></i></button>
+                                <button class="btn btn-info  btn-responsive" onclick="DetailPetItem(@item.Id)" title="Detail" id="DetailPetItem"> <i class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger  btn-responsive" onclick="DeletePetItem(@item.Id)" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         }

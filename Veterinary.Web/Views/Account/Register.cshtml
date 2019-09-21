@@ -7,6 +7,23 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
+        <form>
+            <div asp-validation-summary="ModelOnly"></div>
+            <h1>Mercamascotas</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <span>or use your account</span>
+            <input asp-for="Username" placeholder="Email" />
+            <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+            <input asp-for="Password" type="password" placeholder="Password" />
+            <a href="#">Forgot your password?</a>
+            <button asp-action="Login">Login</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
         <form asp-action="Register">
             <h1>Create Account</h1>
             <input asp-for="Document" type="text" placeholder="Nro Documento" />
@@ -20,23 +37,6 @@
             <input asp-for="PasswordConfirm" type="password" placeholder="Confirmar Contraseña" />
             <span asp-validation-for="PasswordConfirm" class="text-warning"></span>
             <button>Sign Up</button>
-        </form>
-    </div>
-    <div class="form-container sign-in-container">
-        <form>
-            <div asp-validation-summary="ModelOnly"></div>
-            <h1>Mercamascotas</h1>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
-            </div>
-            <span>or use your account</span>
-            <input asp-for="Username" placeholder="Email" />            
-            <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-            <input asp-for="Password" type="password" placeholder="Password" />          
-             <a href="#">Forgot your password?</a>
-            <button value="Login">Sign In</button>
         </form>
     </div>
     <div class="overlay-container">
@@ -66,8 +66,9 @@
             const container = document.getElementById('container');
 
             signUpButton.addEventListener('click', () => {
-                container.classList.add("right-panel-active");
-               
+               container.classList.add("right-panel-active");    
+                    let url = "/"; 
+                    window.location.href = url;  
             });
 
             signInButton.addEventListener('click', () => {
