@@ -445,3 +445,32 @@ function deleteServiceTypeItem(Id) {
 
 }
 
+function SaveServiceTypeItem() {
+
+    const nombre = $("#texto").val();
+
+    var parametros = {
+        "UserName": nombre
+    };
+
+
+    $.ajax({
+        url: '/ServiceTypes/Create/',
+        type: 'POST',
+        contentType: 'application/json;',
+        data: parametros,
+        success: function (valid) {
+            if (valid) {
+                //show that id is valid 
+            } else {
+                //show that id is not valid 
+            }
+        }
+    });   
+}
+
+function ServiceTypesIndex() {
+    $(document).ready(function () {
+        location.href = '/ServiceTypes/Index/';
+    });
+}

@@ -232,6 +232,33 @@ body {
         color: #388dbc;
     }
 
+.container2 {
+    width: 860px;
+    /*background: rgba(11, 13, 24, 0.6);*/
+    margin: 205px auto;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.booking-form {
+    padding: 35px 70px 51px 70px;
+}
+
+#form-group2 {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.form-destination {
+  width: 230px; }
+
+.form-submit {
+    width: 140px;
+}
+
+
+
 @media only screen and (max-width: 767px) {
     .notfound .notfound-404 {
         width: 110px;
@@ -244,7 +271,6 @@ body {
         padding-top: 110px;
     }
 }
-
 
 
 @media screen and (max-width: 800px) {
