@@ -22,15 +22,18 @@ namespace Veterinary.Web.Controllers
         private readonly IUserHelper _userHelper;
         private readonly IConfiguration _configuration;
         private readonly DataContext _dataContext;
+        private readonly IMailHelper _mailHelper;
 
         public AccountController(
             IUserHelper userHelper,
             IConfiguration configuration,
-            DataContext dataContext)
+            DataContext dataContext,
+            IMailHelper mailHelper)
         {
             _userHelper = userHelper;
             _configuration = configuration;
            _dataContext = dataContext;
+           _mailHelper = mailHelper;
         }
 
         [HttpGet]
@@ -132,7 +135,7 @@ namespace Veterinary.Web.Controllers
             {
                 var user = await AddUserAsync(model);
                 if (user == null)
-                {
+                {                   
                     ModelState.AddModelError(string.Empty, "This email is already used.");
                     return View(model);
                 }
@@ -156,22 +159,24 @@ namespace Veterinary.Web.Controllers
 
                 }
 
-                var loginViewModel = new LoginViewModel
+                var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                var tokenLink = Url.Action("ConfirmEmail", "Account", new
                 {
-                    Password = model.Password,
-                    RememberMe = false,
-                    Username = model.Username
-                };
+                    userid = user.Id,
+                    token = myToken
+                }, protocol: HttpContext.Request.Scheme);
 
-                var result2 = await _userHelper.LoginAsync(loginViewModel);
+                _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
+                    $"To allow the user, " +
+                    $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                ViewBag.Message = "The instructions to allow your user has been sent to email.";
 
-                if (result2.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+                return View(model);
+
             }
 
             return View(model);
+            
         }
 
         private async Task<User> AddUserAsync (AddUserViewModel model)
@@ -285,6 +290,27 @@ namespace Veterinary.Web.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return NotFound();
+            }
+
+            var user = await _userHelper.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userHelper.ConfirmEmailAsync(user, token);
+            if (!result.Succeeded)
+            {
+                return NotFound();
+            }
+
+            return View();
+        }
 
 
     }

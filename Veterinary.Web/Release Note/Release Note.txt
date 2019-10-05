@@ -1,0 +1,10 @@
+﻿/*
+Fecha : 2019-10-05
+Realizado: Duvan Baena
+Proyecto : Veterinaria
+Descripcion : Install Nugget Packeage (Mailkit)
+*/
+
+Nugget que me ayuda a enviar correos de forma más intiutiva
+
+/*

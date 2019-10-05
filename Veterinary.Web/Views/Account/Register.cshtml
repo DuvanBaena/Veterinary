@@ -25,6 +25,12 @@
     </div>
     <div class="form-container sign-in-container">
         <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="text-success">
+                <p>
+                    @ViewBag.Message
+                </p>
+            </div>
             <h1>Create Account</h1>
             <input asp-for="Document" type="text" placeholder="Nro Documento" />
             <span asp-validation-for="Document" class="text-warning"></span>
@@ -57,6 +63,9 @@
     </div>
 </div>
 
+
+
+
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
 
@@ -66,14 +75,14 @@
             const container = document.getElementById('container');
 
             signUpButton.addEventListener('click', () => {
-               container.classList.add("right-panel-active");    
-                    let url = "/"; 
-                    window.location.href = url;  
+                container.classList.add("right-panel-active");
+                let url = "/";
+                window.location.href = url;
             });
 
             signInButton.addEventListener('click', () => {
                 container.classList.remove("right-panel-active");
-                 
+
             });
         </script>
     }
