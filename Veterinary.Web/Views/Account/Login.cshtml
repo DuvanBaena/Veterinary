@@ -8,7 +8,7 @@
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="#">
-            <h1>Create Account</h1>
+            <h1>Crea una cuenta con nosotros</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fa fa-twitter"></i></a>
@@ -37,7 +37,7 @@
                 <label asp-for="RememberMe">Remember Me?</label>
                 <span asp-validation-for="RememberMe" class="text-warning"></span>
             </div>
-            <a href="#">Forgot your password?</a>
+           <a asp-action="RecoverPassword">Forgot your password?</a>
             <button type="submit" value="Login">Sign In</button>
         </form>
     </div>
@@ -60,25 +60,22 @@
 </div>
 
 @section scripts{
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");        
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");    
+       <script src="~/js/site.js"></script> 
         <script type="text/javascript">
             const signUpButton = document.getElementById('signUp');
             const signInButton = document.getElementById('signIn');
             const container = document.getElementById('container');
 
             signUpButton.addEventListener("click", function () {
-
-                  container.classList.add("right-panel-active");
-                  // var url = "Account/Register/"; 
-                   window.location.href = url;   
+                  container.classList.add("right-panel-active");      
             });
             
             signInButton.addEventListener('click', () => {
                 container.classList.remove("right-panel-active");                  
             });
-        </script>
-      
-
+        </script>    
+        
      }
 
 

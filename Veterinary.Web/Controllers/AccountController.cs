@@ -166,12 +166,46 @@ namespace Veterinary.Web.Controllers
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
 
-                _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
-                    $"To allow the user, " +
-                    $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                _mailHelper.SendMail(model.Username, "Email confirmation",
+                $"<table style = 'max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>" +
+                $"  <tr>" +
+                $"    <td style = 'background-color: #34495e; text-align: center; padding: 0'>" +
+                $"       <a href = 'https://www.facebook.com/mercamascotasmedellin/' >" +
+                $"         <img width = '20%' style = 'display:block; margin: 1.5% 3%' src= 'https://estaticos.elperiodico.com/resources/jpg/1/6/gato-1502194230861.jpg'>" +
+                $"       </a>" +
+                $"  </td>" +
+                $"  </tr>" +
+                $"  <tr>" +       
+                $"</tr>" +
+                $"<tr>" +
+                $" <td style = 'background-color: #ecf0f1'>" +
+                $"      <div style = 'color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif'>" +
+                $"            <h1 style = 'color: #e67e22; margin: 0 0 7px' > Mercamascotas </h1>" +
+                $"                    <p style = 'margin: 2px; font-size: 15px'>" +
+                $"                      Estamos comprometidos con el bienestar de tu mascota desde nuestro trabajo en la prevención,el acompañamiento al paciente en su<br>" +
+                $"                      recuperación y principalmente en la calidad en nuestros procedimientos médicos de atención veterinaria.<br>" +
+                $"                      Entre los servicios tenemos:</p>" +
+                $"      <ul style = 'font-size: 15px;  margin: 10px 0'>" +
+                $"        <li> Consultas</li>" +
+                $"        <li> Vacunación</li>" +
+                $"        <li> Concentrado</li>" +
+                $"        <li> Farmacia Veterinaria</li>" +
+                $"        <li> Accesorios Y jugetes</li>" +
+                $"      </ul>" +
+                $"  <div style = 'width: 100%;margin:20px 0; display: inline-block;text-align: center'>" +
+                $"    <img style = 'padding: 0; width: 200px; margin: 5px' src = 'https://veterinarianuske.com/wp-content/uploads/2018/07/tarjetas.png'>" +
+                $"  </div>" +
+                $"  <div style = 'width: 100%; text-align: center'>" +
+                $"    <h2 style = 'color: #e67e22; margin: 0 0 7px' >Email Confirmation </h2>" +
+                $"    To allow the user,plase click in this link:</ br ></ br > " +
+                $"    <a style ='text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db' href = \"{tokenLink}\">Confirm Email</a>" +
+                $"    <p style = 'color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0' > Nuskë Clinica Integral Veterinaria 2019 </p>" +
+                $"  </div>" +
+                $" </td >" +
+                $"</tr>" +
+                $"</table>");
                 ViewBag.Message = "The instructions to allow your user has been sent to email.";
-
-                return View(model);
+                return View(model);        
 
             }
 
@@ -310,6 +344,66 @@ namespace Veterinary.Web.Controllers
             }
 
             return View();
+        }
+
+        public IActionResult RecoverPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RecoverPassword(RecoverPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userHelper.GetUserByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "The email doesn't correspont to a registered user.");
+                    return View(model);
+                }
+
+                var myToken = await _userHelper.GeneratePasswordResetTokenAsync(user);
+                var link = Url.Action(
+                    "ResetPassword",
+                    "Account",
+                    new { token = myToken }, protocol: HttpContext.Request.Scheme);
+                _mailHelper.SendMail(model.Email, "MyVet Password Reset", $"<h1>Shop Password Reset</h1>" +
+                    $"To reset the password click in this link:</br></br>" +
+                    $"<a href = \"{link}\">Reset Password</a>");
+                ViewBag.Message = "The instructions to recover your password has been sent to email.";
+                return View();
+
+            }
+
+            return View(model);
+        }
+
+        public IActionResult ResetPassword(string token)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            var user = await _userHelper.GetUserByEmailAsync(model.UserName);
+            if (user != null)
+            {
+                var result = await _userHelper.ResetPasswordAsync(user, model.Token, model.Password);
+                if (result.Succeeded)
+                {
+                    ViewBag.Message = "Password reset successful.";
+                    return View();
+                    // return RedirectToAction("Login", "Account");
+                }
+
+                ViewBag.Message = "Error while resetting the password.";
+                return View(model);
+            }
+
+            ViewBag.Message = "User not found.";
+            return View(model);
         }
 
 
