@@ -473,7 +473,6 @@ function ServiceTypesIndex() {
     });
 }
 
-
 function RecoverPassword() {
 
     const email = document.getElementById('Email').value;
@@ -494,4 +493,39 @@ function RecoverPassword() {
                 }
             }
         }); 
+}
+
+//Manager
+
+function ManagerDetailsItem(Id) {
+    var item_to_DetailsItem = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/Managers/Details/' + item_to_DetailsItem;
+        });
+    }
+}
+
+function ManagerEditItem(Id) {
+    var item_to_EditItem = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/Managers/Edit/' + item_to_EditItem;
+        });
+    }
+
+}
+
+function ManagerCreateItem() {
+    location.href = '/Managers/Create/';    
+}
+
+function ManagerDeleteItem(Id) {
+    var item_to_deleteManager = Id;
+    $('#deleteItem').click((e) => {
+        item_to_delete = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        window.location.href = '/Managers/Delete/' + item_to_deleteManager;
+    });
 }

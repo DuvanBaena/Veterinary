@@ -1,5 +1,4 @@
-﻿using AppMyVet.Web.Data.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Veterinary.Web.Data.Entities;
 

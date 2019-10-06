@@ -1,5 +1,4 @@
-﻿using AppMyVet.Web.Data.Entities;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Veterinary.Web.Data.Entities;

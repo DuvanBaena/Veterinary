@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using Veterinary.Web.Data.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AppMyVet.Web.Data.Entities
+namespace Veterinary.Web.Data.Entities
 {
     [Table("TblManager")]
     public class Manager
