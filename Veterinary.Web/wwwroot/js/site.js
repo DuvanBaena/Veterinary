@@ -389,7 +389,6 @@ function EditPetTypeItem(Id) {
     }
 }
 
-
 function DetailPetTypeItem(Id) {
     var item_to_DetailPetType = Id;
     if (Id !== undefined) {
@@ -405,6 +404,32 @@ function CreatePetTypeItem() {
         location.href = '/PetTypes/Create/';
     });
 }
+
+function CreatePetTypes() {
+
+    //var name = document.getElementById('Name').value;
+    
+    //var parametros = {
+    //    "Email": name
+    //};
+
+    //$.ajax({
+    //    url: '/PetTypes/Createt/',
+    //    type: 'POST',
+    //    contentType: 'application/json;',
+    //    data: parametros,
+    //    success: function (data) {
+
+    //        $('#resp').html(data);  
+    //    }
+    //});     
+
+}
+
+
+
+
+
 
 //ServiceType
 

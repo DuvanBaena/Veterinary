@@ -5,21 +5,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Detalles Mascotas</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-image">
+                <form>                   
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="text-center"> @Html.DisplayNameFor(model => model.Name)</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="text-center">
+                                @Html.DisplayFor(model => model.Name)
+                                @*<input asp-for="Name" class="form-control" name="Name" id="Name" />*@                                
+                            </td>
+                            <td class="text-center">
+                                @*<button asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-responsive" title="Edit"><i class="fa fa-edit"></i></button>*@
+                                <button  class="btn btn-warning btn-responsive" title="Edit" onclick="EditPetTypeItem(@Model.Id)"><i class="fa fa-edit"></i></button>
+                                <button asp-action="Index" class="btn btn-success  btn-responsive" title="Return"> <i class="fa fa-undo"></i></button>
+                            </td>
+                        </tr>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div>
-    <h4>PetType</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script type="text/javascript" src="~/js/site.js"></script>
+    }
+}
+
+
+
