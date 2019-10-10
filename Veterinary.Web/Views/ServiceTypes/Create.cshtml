@@ -6,52 +6,6 @@
 }
 
 
-@*<div class="container" id="advanced-search-form">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-
-            <div class="clearfix"></div>
-            <div class="text-center">
-                <input type="submit" value="Create" class="btn btn-default" />
-                <button type="submit" class="btn btn-warning btn-lg btn-responsive" onclick="EditOwnerItems()" title="Edit"> <i class="fa fa-save"></i></button>
-                <a asp-action="Index">Back to List</a>
-            </div>
-        </form>
-    </div>*@
-
-@*<div class="container2">
-        <form id="booking-form" class="booking-form" method="POST">
-            <div id="form-group2">
-                <div class="form-destination">
-                    <label for="destination">Destination</label>
-                    <input type="text" id="destination" name="destination" placeholder="EG. HAWAII" />
-                </div>
-                <div class="form-date-to form-icon">
-                    <label for="date_to">To</label>
-                    <input type="text" id="date_to" class="date_to" placeholder="Pick a date" />
-                     <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span>
-                </div>
-                <div class="form-quantity">
-                    <label for="quantity">Quantity</label>
-                    <span class="modify-qty plus" onClick="Tang()"><i class="zmdi zmdi-chevron-up"></i></span>
-                    <input type="number" name="quantity" id="quantity" value="0" min="0" class="nput-text qty text">
-                    <span class="modify-qty minus" onClick="Giam()"><i class="zmdi zmdi-chevron-down"></i></span>
-                </div>
-
-
-                <div class="form-submit">
-                    <input type="submit" id="submit" class="submit" value="Book now" />
-                </div>
-            </div>
-        </form>
-
-    </div>*@
-
     <div >
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -73,8 +27,8 @@
                                     @*<span asp-validation-for="Name" class="text-danger"></span>*@
                                 </td>
                                 <td class="text-center">                                    
-                                    <button class="btn btn-primary  btn-responsive" title="Create"> <i class="fa fa-plus"></i> </button>
-                                    <button class="btn btn-success  btn-responsive" title="Return" onclick="ServiceTypesIndex()"> <i class="fa fa-undo"></i></button>
+                                    <button type="submit" class="btn btn-primary  btn-responsive" title="Create"> <i class="fa fa-plus"></i> </button>
+                                    <button type="button" class="btn btn-success  btn-responsive" title="Return" onclick="ServiceTypesIndex()"> <i class="fa fa-undo"></i></button>
                                 </td>
                             </tr>
                             <tbody>

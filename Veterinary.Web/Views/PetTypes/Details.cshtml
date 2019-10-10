@@ -8,7 +8,7 @@
 <div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Detalles Mascotas</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Detalles de Mascotas</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive table-image">
@@ -25,10 +25,9 @@
                                 @Html.DisplayFor(model => model.Name)
                                 @*<input asp-for="Name" class="form-control" name="Name" id="Name" />*@                                
                             </td>
-                            <td class="text-center">
-                                @*<button asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-responsive" title="Edit"><i class="fa fa-edit"></i></button>*@
-                                <button  class="btn btn-warning btn-responsive" title="Edit" onclick="EditPetTypeItem(@Model.Id)"><i class="fa fa-edit"></i></button>
-                                <button asp-action="Index" class="btn btn-success  btn-responsive" title="Return"> <i class="fa fa-undo"></i></button>
+                            <td class="text-center">                                
+                                <button type="button" class="btn btn-warning btn-responsive" title="Edit" onclick="EditPetTypeItem(@Model.Id)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-success  btn-responsive" title="Return" onclick="ReturnIndexPetTypes()"> <i class="fa fa-undo"></i></button>
                             </td>
                         </tr>
                         <tbody>
@@ -39,7 +38,6 @@
         </div>
     </div>
 </div>
-
 
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");

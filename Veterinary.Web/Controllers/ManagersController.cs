@@ -193,8 +193,8 @@ namespace Veterinary.Web.Controllers
             {
                 return NotFound();
             }
-            var manager = await _dataContext.Managers             
-             .Include(u => u.User)   
+            var manager = await _dataContext.Managers
+             .Include(u => u.User)
              .FirstOrDefaultAsync(m => m.Id == id);
 
             if (manager == null)

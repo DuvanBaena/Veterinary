@@ -380,6 +380,10 @@ function deletePetTypeItem(Id) {
 }
 
 
+function ReturnIndexPetTypes() {
+    location.href = '/PetTypes/Index/';
+}
+
 function EditPetTypeItem(Id) {
     var item_to_EditPetType = Id;
     if (Id !== undefined) {
@@ -397,7 +401,6 @@ function DetailPetTypeItem(Id) {
         });
     }
 }
-
 
 function CreatePetTypeItem() {
     $(document).ready(function () {
@@ -428,15 +431,10 @@ function CreatePetTypes() {
 
 
 
-
-
-
 //ServiceType
 
 function CreateServiceTypeItem() {
-    $(document).ready(function () {
-        location.href = '/ServiceTypes/Create/';
-    });
+    location.href = '/ServiceTypes/Create/';
 }
 
 function EditServiceTypeItem(Id) {
