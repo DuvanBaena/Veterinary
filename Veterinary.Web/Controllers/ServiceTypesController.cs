@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Veterinary.Web.Data.Entities;
@@ -112,8 +113,7 @@ namespace Veterinary.Web.Controllers
             }
             return View(serviceType);
         }
-
-        // GET: ServiceTypes/Delete/5
+    
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -122,24 +122,33 @@ namespace Veterinary.Web.Controllers
             }
 
             var serviceType = await _context.ServiceTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            .Include(h => h.Histories)
+            .FirstOrDefaultAsync(h => h.Id == id);
+
             if (serviceType == null)
             {
                 return NotFound();
             }
 
-            return View(serviceType);
-        }
+            if (serviceType.Histories.Count > 0)
+            {
 
-        // POST: ServiceTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var serviceType = await _context.ServiceTypes.FindAsync(id);
-            _context.ServiceTypes.Remove(serviceType);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                ModelState.AddModelError(string.Empty, "The pet Servicetype can´t be removed ");
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                _context.ServiceTypes.Remove(serviceType);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError(string.Empty, ex.ToString());
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool ServiceTypeExists(int id)

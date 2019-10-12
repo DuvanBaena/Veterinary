@@ -216,10 +216,10 @@ namespace Veterinary.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ManagerExists(int id)
-        {
-            return _dataContext.Managers.Any(e => e.Id == id);
-        }
+        //private bool ManagerExists(int id)
+        //{
+        //    return _dataContext.Managers.Any(e => e.Id == id);
+        //}
 
 
     }

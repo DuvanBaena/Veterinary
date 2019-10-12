@@ -429,8 +429,6 @@ function CreatePetTypes() {
 
 }
 
-
-
 //ServiceType
 
 function CreateServiceTypeItem() {
@@ -550,5 +548,11 @@ function ManagerDeleteItem(Id) {
     });
     $("#btnYesDelete").click(function () {
         window.location.href = '/Managers/Delete/' + item_to_deleteManager;
+    });
+}
+
+function ManagerIndex() {
+    $(document).ready(function () {
+        location.href = '/Managers/Index/';
     });
 }
