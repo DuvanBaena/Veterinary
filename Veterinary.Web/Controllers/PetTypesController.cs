@@ -19,14 +19,12 @@ namespace Veterinary.Web.Controllers
         {
             _context = context;
         }
-
-        // GET: PetTypes
+    
         public async Task<IActionResult> Index()
         {
             return View(await _context.PetTypes.ToListAsync());
         }
 
-        // GET: PetTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,8 +40,7 @@ namespace Veterinary.Web.Controllers
 
             return View(petType);
         }
-
-        // GET: PetTypes/Create
+   
         public IActionResult Create()
         {
             return View();
@@ -70,8 +67,7 @@ namespace Veterinary.Web.Controllers
             }
             return View(petType);
         }
-
-        // GET: PetTypes/Edit/5
+       
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

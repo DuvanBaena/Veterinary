@@ -17,13 +17,11 @@ namespace Veterinary.Web.Controllers
             _context = context;
         }
 
-        // GET: ServiceTypes
         public async Task<IActionResult> Index()
         {
             return View(await _context.ServiceTypes.ToListAsync());
         }
-
-        // GET: ServiceTypes/Details/5
+       
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -41,29 +39,36 @@ namespace Veterinary.Web.Controllers
             return View(serviceType);
         }
 
-        // GET: ServiceTypes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ServiceTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] ServiceType serviceType)
+        public async Task<IActionResult> Create(ServiceType serviceType)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(serviceType);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError(string.Empty, ex.ToString());
+                    return View();
+                }
             }
             return View(serviceType);
+
         }
 
-        // GET: ServiceTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,18 +84,10 @@ namespace Veterinary.Web.Controllers
             return View(serviceType);
         }
 
-        // POST: ServiceTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] ServiceType serviceType)
+        public async Task<IActionResult> Edit(ServiceType serviceType)
         {
-            if (id != serviceType.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
