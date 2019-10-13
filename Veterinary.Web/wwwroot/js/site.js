@@ -639,3 +639,56 @@ function DeleteAgendaItem(Id) {
         location.href = '/Agenda/Unassign/' + item_to_AddAgenda;
     });
 }
+
+//Home
+function HomewCreateMypet() {
+
+}
+
+function HomeCreateItem() { 
+   $(document).ready(function () {
+       location.href = '/Home/Create/';
+   });    
+}
+
+function HomeEditMyPet(Id) {
+    var item_to_EditMyPet = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/Home/Edit/' + item_to_EditMyPet;
+        });
+    }
+}
+
+function HomeDetailsMyPet(Id) {
+    var item_to_DetailsMyPet = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/Home/Details/' + item_to_DetailsMyPet;
+        });
+    }
+}
+
+function HomeMyPetsIndex() {
+    $(document).ready(function () {
+        location.href = '/Home/MyPets/';
+    });
+}
+
+function HomeDeleteIndex(Id) {
+    var item_to_DeleteMyPets = Id;
+    $('#deleteItem').click((e) => {
+        item_to_DeleteMyPets = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        location.href = '/Home/Delete/' + item_to_DeleteMyPets;
+    });
+}
+
+
+document.addEventListener("DOMContentLoaded", function (e) { 
+    
+        console.log("Hola click djbanba");    
+
+});
+
