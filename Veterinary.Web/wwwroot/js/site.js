@@ -556,3 +556,72 @@ function ManagerIndex() {
         location.href = '/Managers/Index/';
     });
 }
+
+//Pet
+ function EditPetsItem(Id) {
+    var item_to_EditPets = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/Pets/Edit/' + item_to_EditPets;
+        });
+    }
+}
+
+function DetailPetsItem(Id) {
+    var item_to_DetailPets = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/Pets/Details/' + item_to_DetailPets;
+        });
+    }
+}
+
+function PetsIndex() {
+    $(document).ready(function () {
+        location.href = '/Pets/Index/';
+    });
+}
+
+function AddHistorieItem(Id) {
+    const item_to_AddHistorie = Id;
+    $(document).ready(function () {
+        location.href = '/Pets/AddHistory/' + item_to_AddHistorie;
+    });
+}
+
+function PetDetailIndex() {
+    $(document).ready(function () {
+        location.href = '/Pets/Index/';
+    });
+}
+
+function PetEdithistories(Id) {
+    const item_to_EditHistorie = Id;
+    $(document).ready(function () {
+        location.href = '/Pets/EditHistory/' + item_to_EditHistorie;
+    });
+
+}
+
+function PetDeleteIndex(Id) {
+  var item_to_PetHistorie = Id;
+  $('#deleteItem').click((e) => {
+      item_to_delete = e.currentTarget.dataset.id;
+  });
+  $("#btnYesDelete").click(function () {
+      location.href = '/Pets/Delete/' + item_to_PetHistorie;
+  });
+}
+
+
+function PetDeleteDetail(Id) {
+    var item_to_PetDetailHistorie = Id;
+    $('#deleteItem').click((e) => {
+        item_to_delete = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        location.href = '/Pets/DeleteHistory/' + item_to_PetDetailHistorie;
+    });   
+}
+
+

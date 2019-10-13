@@ -106,7 +106,8 @@ namespace Veterinary.Web.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                // return RedirectToAction(nameof(Index));
+                return Ok("updated in the database!");
             }
             return View(serviceType);
         }
