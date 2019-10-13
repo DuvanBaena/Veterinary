@@ -57,7 +57,7 @@ namespace Veterinary.Web.Controllers
                         return Redirect(Request.Query["ReturnUrl"].First());
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Owners");
                 }
 
                 ModelState.AddModelError(string.Empty, "Failed to login.");

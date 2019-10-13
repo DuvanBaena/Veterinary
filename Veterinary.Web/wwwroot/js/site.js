@@ -365,7 +365,6 @@ function DeleteHistory(Id) {
     });
 }
 
-
 //PetType
 
 function deletePetTypeItem(Id) {
@@ -378,7 +377,6 @@ function deletePetTypeItem(Id) {
     });
 
 }
-
 
 function ReturnIndexPetTypes() {
     location.href = '/PetTypes/Index/';
@@ -613,7 +611,6 @@ function PetDeleteIndex(Id) {
   });
 }
 
-
 function PetDeleteDetail(Id) {
     var item_to_PetDetailHistorie = Id;
     $('#deleteItem').click((e) => {
@@ -624,4 +621,21 @@ function PetDeleteDetail(Id) {
     });   
 }
 
+//Agenda
 
+function AddAgendaItem(Id) {
+    const item_to_AddAgenda = Id;
+    $(document).ready(function () {
+        location.href = '/Agenda/Assing/' + item_to_AddAgenda;
+    });
+}
+
+function DeleteAgendaItem(Id) {
+    var item_to_AddAgenda = Id;
+    $('#deleteItem').click((e) => {
+        item_to_AddAgenda = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        location.href = '/Agenda/Unassign/' + item_to_AddAgenda;
+    });
+}

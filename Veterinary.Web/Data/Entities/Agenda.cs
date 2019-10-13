@@ -21,7 +21,7 @@ namespace Veterinary.Web.Data.Entities
         public bool IsAvailable { get; set; }
 
         [Display(Name = "Date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd H:mm tt}")]
         public DateTime DateLocal => Date.ToLocalTime();
 
         public Owner Owner { get; set; }

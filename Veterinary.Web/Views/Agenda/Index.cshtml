@@ -12,12 +12,8 @@
     </nav>
 
 <p>
-    @*<a asp-action="Create" class="btn btn-primary">Create New</a>*@
-    @*<a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus-square"></i> Create New</a>*@
-    <button class="btn btn-primary btn-lg btn-responsive"  id="search" title="Create"> <i class="fa fa-plus-square"></i></button>
+    <a asp-action="AddDays" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Days</a>
 </p>
-
-
 
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -26,6 +22,8 @@
                 <thead>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.Date)</th>
+                        <th> Owner</th>
+                        <th> Pet</th>
                         <th> @Html.DisplayNameFor(model => model.Remarks)</th>
                         <th> @Html.DisplayNameFor(model => model.IsAvailable)</th>
                         <th> Opcion</th>
@@ -34,16 +32,24 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
-                            <td>@Html.DisplayFor(modelItem => item.IsAvailable)</td>
-                            <td class="text-center">
-                                <button class="btn btn-warning" id="EditItem"  title="Edit"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-info" id="DetailsItem"  title="Detail"><i class="fa fa-search-plus"></i></button>
-                                <button class="btn btn-danger " title="Delete" id="DeleteItem"  data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.DateLocal)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Owner.User.FullName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Pet.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IsAvailable)</td>
+                        <td>
+
+                            @if (item.IsAvailable)
+                            {
+                                <button class="btn btn-info" id="DetailsItem" title="Create" onclick="AddAgendaItem(@item.Id)"><i class="fa fa-plus-circle"></i></button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger deleteItem" data-toggle="modal" title="Delete" onclick="DeleteAgendaItem(@item.Id)" data-target="#deleteDialog"><i class="fa fa-minus-circle"></i></button>
+                            }
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
@@ -65,5 +71,9 @@
                 });
             });
         </script>
+
+
+
+
     }
 }

@@ -31,7 +31,7 @@ namespace Veterinary.Web.Data
             await CheckOwnerAsync(customer);
             await CheckManagerAsync(manager);
             await CheckPetsAsync();
-            await CheckAgendasAsync();
+            //await CheckAgendasAsync();
         }
 
         private async Task CheckRoles()
@@ -152,7 +152,7 @@ namespace Veterinary.Web.Data
                         {
                             _dataContext.Agendas.Add(new Agenda
                             {
-                                Date = initialDate,
+                                Date = initialDate.ToUniversalTime(),
                                 IsAvailable = true
                             });
 
