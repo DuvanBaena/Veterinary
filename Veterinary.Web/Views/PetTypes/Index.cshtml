@@ -5,16 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/PetTypes/Index">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@Html.DisplayNameFor(model => model.Name)</li>
-        </ol>
-    </nav>
-
-    <p>
-        <button type="submit" class="btn btn-primary btn-lg btn-responsive" onclick=CreatePetTypeItem() title="Create"> <i class="fa fa-plus-square"></i></button>
-    </p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/PetTypes/Index">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Html.DisplayNameFor(model => model.Name)</li>
+    </ol>
+</nav>
+<p>
+    <button class="btn btn-primary btn-lg btn-responsive" onclick=CreatePetTypeItem() title="Create"> <i class="fa fa-plus-square"></i></button>
+</p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Creación de Mascotas</h6>
