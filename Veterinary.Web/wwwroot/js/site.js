@@ -640,8 +640,14 @@ function DeleteAgendaItem(Id) {
     });
 }
 
+function AgendaAddDaysItem() {
+    $(document).ready(function () {
+        location.href = '/Agenda/AddDays/';
+    });
+}
+
 //Home
-function HomewCreateMypet() {
+function HomeCreateMypet() {
 
 }
 
@@ -685,10 +691,24 @@ function HomeDeleteIndex(Id) {
     });
 }
 
+function HomeAddAgendaitem(Id) {
+    const item_to_AddAgenda = Id;
+    $(document).ready(function () {
+        location.href = '/Home/Assing/' + item_to_AddAgenda;
+    });
 
-document.addEventListener("DOMContentLoaded", function (e) { 
-    
-        console.log("Hola click djbanba");    
+}
 
-});
+function HomeDeleteAgendaItem(Id) {
+    var item_to_DeleteAgenda = Id;
+    $('#deleteItem').click((e) => {
+        item_to_DeleteAgenda = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        location.href = '/Home/Unassign/' + item_to_DeleteAgenda;
+    });
+
+}
+
+
 

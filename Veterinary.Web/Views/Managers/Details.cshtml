@@ -4,7 +4,13 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Managers/Index">Clientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Editar Administradores</li>
+            <li class="breadcrumb-item active" aria-current="page">Detalles Administradores</li>
+        </ol>
+    </nav>
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive table-image">
@@ -20,17 +26,17 @@
                     </tr>
                 </thead>
                 <tbody>        
-                        <tr>
-                            <td>@Html.DisplayFor(model => model.User.Document)</td>
-                            <td>@Html.DisplayFor(model => model.User.FullName)</td>
-                            <td>@Html.DisplayFor(model => model.User.Email)</td>
-                            <td>@Html.DisplayFor(model => model.User.Address)</td>
-                            <td>@Html.DisplayFor(model => model.User.PhoneNumber)</td>
-                            <td class="text-center">
-                                <a asp-action="Index" class="btn btn-success">Back to List</a>                                
-                                <button class="btn btn-info" id="DetailsItem" title="Detail"><i class="fa fa-search-plus"></i></button>
-                            </td>
-                        </tr>                 
+                     <tr>
+                         <td>@Html.DisplayFor(model => model.User.Document)</td>
+                         <td>@Html.DisplayFor(model => model.User.FullName)</td>
+                         <td>@Html.DisplayFor(model => model.User.Email)</td>
+                         <td>@Html.DisplayFor(model => model.User.Address)</td>
+                         <td>@Html.DisplayFor(model => model.User.PhoneNumber)</td>
+                         <td class="text-center"> 
+                             <button class="btn btn-warning" id="EditItem" title="Edit" onclick="ManagerEditItem(@Model.Id)"><i class="fa fa-edit"></i></button>
+                             <button type="button" class="btn btn-success  btn-responsive" title="Return" onclick="ManagerIndex()"> <i class="fa fa-undo"></i></button>
+                         </td>
+                     </tr>                 
                 </tbody>                  
             </table>
         </div>

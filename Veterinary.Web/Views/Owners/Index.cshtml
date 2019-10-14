@@ -11,10 +11,13 @@
     </ol>
 </nav>
 <p>
-    <button class="btn btn-primary btn-lg btn-responsive" onclick="CreateOwnerIndex()" id="search" title="Create"> <i class="fa fa-plus-square"></i></button>
+    <button class="btn btn-primary btn-lg btn-responsive" onclick="CreateOwnerIndex()" id="search" title="Create"><i class="fa fa-plus-square"></i></button>
 </p>
 
 <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Listado General de Clientes</h6>
+    </div>
     <div class="card-body">
         <div class="table-responsive table-image">
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -32,22 +35,22 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.User.Document)</td>
-                        <td>@Html.DisplayFor(modelItem => item.User.FullName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
-                        <td>@Html.DisplayFor(modelItem => item.User.Address)</td>
-                        <td>@Html.DisplayFor(modelItem => item.User.PhoneNumber)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Pets.Count)</td>
-                        <td class="text-center">
-                            <button class="btn btn-warning" id="EditItem" onclick="EditItem(@item.Id)" title="Edit"><i class="fa fa-edit"></i></button>
-                            <button class="btn btn-info" id="DetailsItem" onclick="DetailsItem(@item.Id)" title="Detail"><i class="fa fa-search-plus"></i></button>
-                            <button class="btn btn-danger " title="Delete" id="DeleteItem" onclick="DeleteItem(@item.Id)" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.User.Document)</td>
+                            <td>@Html.DisplayFor(modelItem => item.User.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => item.User.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.User.PhoneNumber)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Pets.Count)</td>
+                            <td class="text-center">
+                                <button class="btn btn-warning" id="EditItem" onclick="EditItem(@item.Id)" title="Edit"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-info" id="DetailsItem" onclick="DetailsItem(@item.Id)" title="Detail"><i class="fa fa-search-plus"></i></button>
+                                <button class="btn btn-danger " title="Delete" id="DeleteItem" onclick="DeleteItem(@item.Id)" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
                     }
-                    </tbody>
-              </table>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

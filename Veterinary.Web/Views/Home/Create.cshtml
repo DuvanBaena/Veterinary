@@ -10,13 +10,13 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="OwnerId" />
         <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
+            <label asp-for="Name" class="control-label" Name="Name" id="Name"></label>
             <input asp-for="Name" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="ImageFile" class="control-label"></label>
+            <label asp-for="ImageFile" class="control-label"  ></label>
             <input asp-for="ImageFile" class="form-control" type="file" />
             <span asp-validation-for="ImageFile" class="text-danger"></span>
         </div>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Race" class="control-label"></label>
+            <label asp-for="Race" class="control-label" Name="Race" id="Race" ></label>
             <input asp-for="Race" class="form-control" />
             <span asp-validation-for="Race" class="text-danger"></span>
         </div>
@@ -47,7 +47,7 @@
 
         <div class="clearfix"></div>
         <div class="text-center">
-            <button type="submit" class="btn btn-info btn-lg btn-responsive" id="SearchCreate" title="Create"><i class="fa fa-plus-square"></i></button>
+            <button type="submit" class="btn btn-info btn-lg btn-responsive" title="Create"><i class="fa fa-plus-square"></i></button>
         </div>
     </form>
 </div>
