@@ -26,6 +26,9 @@ namespace Veterinary.Web.Data.Entities
         [Display(Name = "Business Name")]
         public string BusinessName { get; set; }
 
+        [Display(Name = "Phone Number")]
+        public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
+
         [Display(Name = "Landline Phone")]
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         public string LandlinePhone { get; set; }

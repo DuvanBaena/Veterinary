@@ -492,28 +492,6 @@ function ServiceTypesIndex() {
     });
 }
 
-function RecoverPassword() {
-
-    const email = document.getElementById('Email').value;
-        var parametros = {
-            "Email": email
-        };
-
-        $.ajax({
-            url: '/Account/RecoverPassword/',
-            type: 'POST',
-            contentType: 'application/json;',
-            data: parametros,
-            success: function (valid) {
-                if (valid) {
-                    //show that id is valid 
-                } else {
-                    //show that id is not valid 
-                }
-            }
-        }); 
-}
-
 //Manager
 
 function ManagerDetailsItem(Id) {
@@ -710,5 +688,17 @@ function HomeDeleteAgendaItem(Id) {
 
 }
 
+// Acount
+
+function RecoverPassword() {
+    $(document).ready(function () {
+        location.href = '/Account/RecoverPassword/';
+    });
+}
 
 
+function ChangePassword() {
+    $(document).ready(function () {
+        location.href = '/Account/ChangePassword/';
+    });
+}

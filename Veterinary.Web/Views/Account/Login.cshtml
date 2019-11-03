@@ -19,7 +19,9 @@
     </div>
     <div class="form-container sign-in-container">
         <form method="post">
-            <div asp-validation-summary="ModelOnly"></div>
+            <div class="text-success">
+                <div asp-validation-summary="ModelOnly"></div>
+            </div>
             <h1>Mercamascotas</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
@@ -37,7 +39,7 @@
                 <label asp-for="RememberMe">Recuérdame?</label>
                 <span asp-validation-for="RememberMe" class="text-warning"></span>
             </div>
-           <a asp-action="RecoverPassword">Recordar Contraseña?</a>
+            <a onclick="RecoverPassword()" class="btn btn-link">Recordar Contraseña?</a>
             <button type="submit" value="Login">Iniciar Sessión</button>
         </form>
     </div>
@@ -46,7 +48,7 @@
             <div class="overlay-panel overlay-left">
                 <h1>Bienvenido de nuevo!</h1>
                 <p>
-                    Para  Conectarse con nosotros por favor ingresa tus datos de registro!                
+                    Para  Conectarse con nosotros por favor ingresa tus datos de registro!
                 </p>
                 <button class="ghost" id="signIn">Ir</button>
             </div>
@@ -60,26 +62,29 @@
 </div>
 
 @section scripts{
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");    
-       <script src="~/js/site.js"></script> 
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/js/site.js"></script>
+
         <script type="text/javascript">
             const signUpButton = document.getElementById('signUp');
             const signInButton = document.getElementById('signIn');
             const container = document.getElementById('container');
 
             signUpButton.addEventListener("click", function () {
-                  container.classList.add("right-panel-active");      
+                container.classList.add("right-panel-active");
             });
-            
+
             signInButton.addEventListener('click', () => {
-                container.classList.remove("right-panel-active");                  
+                container.classList.remove("right-panel-active");
             });
-        </script>    
-        
-     }
+        </script>
 
 
- }
+
+    }
+
+
+}
 
 
 

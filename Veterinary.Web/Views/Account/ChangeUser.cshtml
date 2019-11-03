@@ -14,13 +14,15 @@
             <div class="clearfix"></div>
             <div class="text-center">
                 <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="ChangePassword" class="btn btn-warning">Change Password</a>               
+                <a onclick="ChangePassword()" class="btn btn-warning">Change Password</a>               
             </div>
         </form>
    </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/js/site.js"></script>
+     }
 }
 
 
