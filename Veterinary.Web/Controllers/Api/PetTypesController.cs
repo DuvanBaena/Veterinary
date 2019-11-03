@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Models.Data;
 
@@ -23,7 +24,7 @@ namespace Veterinary.Web.Controllers.Api
         [HttpGet]
         public IEnumerable<PetType> GetPetTypes()
         {
-            return _context.PetTypes;
+            return _context.PetTypes.OrderBy(pt => pt.Name);
         }
 
 

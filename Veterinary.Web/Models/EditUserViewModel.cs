@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Veterinary.Web.Models
 {
@@ -22,7 +18,7 @@ namespace Veterinary.Web.Models
 
         [Display(Name = "Last Name")]
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        
+
         public string LastName { get; set; }
 
         [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
