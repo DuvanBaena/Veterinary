@@ -5,6 +5,8 @@ namespace Veterinary.Web.Helpers
 {
     public interface ICombosHelper
     {
+        IEnumerable<SelectListItem> GetComboPetSex();
+
         IEnumerable<SelectListItem> GetComboPetTypes();
 
         IEnumerable<SelectListItem> GetComboServiceTypes();

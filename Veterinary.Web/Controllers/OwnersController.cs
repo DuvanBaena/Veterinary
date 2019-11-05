@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,7 +24,7 @@ namespace Veterinary.Web.Controllers
         private readonly IMailHelper _mailHelper;
 
         public OwnersController(
-            DataContext context, 
+            DataContext context,
             IUserHelper userHelper,
             ICombosHelper combosHelper,
             IConverterHelper converterHelper,
@@ -43,11 +42,11 @@ namespace Veterinary.Web.Controllers
         // GET: Owners
         public IActionResult Index()
         {
-            return View( _dataContext.Owners
+            return View(_dataContext.Owners
                 .Include(o => o.User)
-                .Include(o=> o.Pets));
+                .Include(o => o.Pets));
         }
-   
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -69,7 +68,7 @@ namespace Veterinary.Web.Controllers
 
             return View(owner);
         }
-        
+
         public IActionResult Create()
         {
             return View();
@@ -140,17 +139,17 @@ namespace Veterinary.Web.Controllers
 
                         ModelState.AddModelError(string.Empty, ex.ToString());
                         return View(model);
-                       
+
                     }
 
-                   // return Json(result);
+                    // return Json(result);
                 }
 
                 ModelState.AddModelError(string.Empty, response.Errors.FirstOrDefault().Description);
             }
 
             return View(model);
-           
+
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -277,7 +276,8 @@ namespace Veterinary.Web.Controllers
             {
                 Born = DateTime.Today,
                 OwnerId = owner.Id,
-                PetTypes = _combosHelper.GetComboPetTypes()
+                PetTypes = _combosHelper.GetComboPetTypes(),
+                PetSexs = _combosHelper.GetComboPetSex(),
 
             };
 
@@ -303,7 +303,7 @@ namespace Veterinary.Web.Controllers
                 _dataContext.Pets.Add(pet);
 
                 try
-                {                   
+                {
                     await _dataContext.SaveChangesAsync();
                     return RedirectToAction($"Details/{model.OwnerId}");
                 }
@@ -315,6 +315,7 @@ namespace Veterinary.Web.Controllers
             }
 
             model.PetTypes = _combosHelper.GetComboPetTypes();
+            model.PetSexs = _combosHelper.GetComboPetSex();
             return View(model);
         }
 
@@ -329,6 +330,7 @@ namespace Veterinary.Web.Controllers
             var pet = await _dataContext.Pets
                 .Include(p => p.Owner)
                 .Include(p => p.PetType)
+                .Include(p => p.PetSex)
                 .FirstOrDefaultAsync(p => p.Id == id);
             if (pet == null)
             {
@@ -353,7 +355,7 @@ namespace Veterinary.Web.Controllers
                     path = await _imageHelper.UploadImageAsync(model.ImageFile);
                 }
 
-                var pet = await _converterHelper.ToPetAsync(model, path, false);               
+                var pet = await _converterHelper.ToPetAsync(model, path, false);
 
                 try
                 {
@@ -369,6 +371,7 @@ namespace Veterinary.Web.Controllers
                 }
             }
             model.PetTypes = _combosHelper.GetComboPetTypes();
+           // model.PetSexs = _combosHelper.GetComboPetSex();
             return View(model);
         }
 

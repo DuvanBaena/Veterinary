@@ -76,5 +76,6 @@
     <Build Include="dbo\Tables\TblPet.sql" />
     <Build Include="dbo\Tables\TblAgenda.sql" />
     <Build Include="dbo\Tables\TblHistory.sql" />
+    <Build Include="dbo\Tables\TblPetSex.sql" />
   </ItemGroup>
 </Project>

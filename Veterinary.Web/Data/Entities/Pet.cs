@@ -37,6 +37,8 @@ namespace Veterinary.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime BornLocal => Born;
 
+        public PetSex PetSex { get; set; }
+
         public PetType PetType { get; set; }
 
         public Owner Owner { get; set; }

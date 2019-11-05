@@ -15,9 +15,16 @@ namespace Veterinary.Web.Models
         [Range(1, int.MaxValue, ErrorMessage = "You must select a pet type.")]
         public int PetTypeId { get; set; }
 
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Pet Sex")]
+        [Range(1, int.MaxValue, ErrorMessage = "You must select a pet Sex.")]
+        public int PetSexId { get; set; }
+
         [Display(Name = "Image")]
         public IFormFile ImageFile { get; set; }
 
         public IEnumerable<SelectListItem> PetTypes { get; set; }
+
+        public IEnumerable<SelectListItem> PetSexs { get; set; }
     }
 }

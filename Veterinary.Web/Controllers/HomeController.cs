@@ -221,6 +221,7 @@ namespace Veterinary.Web.Controllers
             {
                 Born = DateTime.Now,
                 PetTypes = _combosHelper.GetComboPetTypes(),
+                PetSexs = _combosHelper.GetComboPetSex(),
                 OwnerId = owner.Id
             };
 
@@ -259,6 +260,7 @@ namespace Veterinary.Web.Controllers
                     Name = model.Name,
                     Owner = await _dataContext.Owners.FindAsync(model.OwnerId),
                     PetType = await _dataContext.PetTypes.FindAsync(model.PetTypeId),
+                    PetSex = await _dataContext.PetSexes.FindAsync(model.PetSexId),
                     Race = model.Race,
                     Remarks = model.Remarks
                 };
@@ -269,6 +271,7 @@ namespace Veterinary.Web.Controllers
             }
 
             model.PetTypes = _combosHelper.GetComboPetTypes();
+            model.PetSexs = _combosHelper.GetComboPetSex();
             return View(model);
         }
 
