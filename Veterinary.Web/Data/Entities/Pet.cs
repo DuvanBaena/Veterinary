@@ -41,6 +41,8 @@ namespace Veterinary.Web.Data.Entities
 
         public PetType PetType { get; set; }
 
+        public PetRace PetRace { get; set; }
+
         public Owner Owner { get; set; }
 
         public ICollection<History> Histories { get; set; }

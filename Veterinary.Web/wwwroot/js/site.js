@@ -245,7 +245,7 @@ function CreateAddPet() {
     toastrValidated();
 
     const name = document.getElementById('Name').value;
-    const born = document.getElementById('Born').value;
+    const born = document.getElementById('datepicker').value;
     const petType = document.getElementById('PetTypeId').value;
     const resul = parseInt(petType);
 
@@ -627,6 +627,47 @@ function AgendaAddDaysItem() {
 //Home
 function HomeCreateMypet() {
 
+    toastrValidated();
+
+    const name = document.getElementById('Name').value;  
+    const pettype = document.getElementById('PetTypeId').value;  
+    const petsex = document.getElementById('PetSexId').value;  
+    const resultpettype = parseInt(pettype);
+    const resulpetsex = parseInt(petsex);
+
+    if (name === '') {
+        $("#Name").css('border-color', 'Red');
+        toastr["error"]("Ingresa un nombre de mascota", "Alerta");
+        $("#Name").focus();
+        $("#Name").keydown(function () {
+            $("#Name").css("border-color", "lightgrey");
+        });
+        $("#Name").keyup(function () {
+            $("#Name").css("border-color", "lightgrey");
+        });
+        return false;
+    } else if (resultpettype === 0) {  
+        $("#PetTypeId").css('border-color', 'Red');
+        toastr["error"]("Selección tipo de mascota", "Alerta");     
+        $("#PetTypeId").keydown(function () {
+            $("#PetTypeId").css("border-color", "lightgrey");
+        });
+        $("#PetTypeId").keyup(function () {
+            $("#PetTypeId").css("border-color", "lightgrey");
+        });
+        return false;  
+    } else if (resulpetsex === 0) {
+        $("#PetSexId").css('border-color', 'Red');
+        toastr["error"]("Tipo  sexo de mascota", "Alerta");
+        $("#PetSexId").focus();
+        return false;
+    }
+
+    else {
+
+        return false;
+    }
+
 }
 
 function HomeCreateItem() { 
@@ -696,9 +737,72 @@ function RecoverPassword() {
     });
 }
 
-
 function ChangePassword() {
     $(document).ready(function () {
         location.href = '/Account/ChangePassword/';
     });
 }
+
+//Pet Race
+
+function PetRaceCreateItem() {
+    $(document).ready(function () {
+        location.href = '/PetRaces/Create/';
+    });
+}
+
+function PetRaceIndexItem() {
+    $(document).ready(function () {
+        location.href = '/PetRaces/Index/';
+    });
+}
+
+
+function ConceptQA() {
+
+    toastrValidated();
+
+    var name = document.getElementById('Name').value;
+
+    var parametros = {
+        "Name": name
+    };
+
+    $.ajax({ 
+        data: parametros, 
+        url: "/PetRaces/Create/",
+        type: "POST",
+        success: function (result) {          
+            if (result === "Success") { 
+
+                $(document).ready(function () {
+                    location.href = '/PetRaces/Index/';
+                });
+            }
+            else {
+                $("#Name").css('border-color', 'Red');
+                toastr.error("Ingresa una raza de mascota", "alerta!");
+                $("#Name").focus();
+                $("#Name").keydown(function () {
+                    $("#Name").css("border-color", "lightgrey");
+                });
+                $("#Name").keyup(function () {
+                    $("#Name").css("border-color", "lightgrey");
+                });               
+            }
+        }
+    });  
+
+}
+
+function PetRaceEditItem(Id) {
+    var item_to_EditPetsRace = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/PetRaces/Edit/' + item_to_EditPetsRace;
+        });
+    }
+}
+
+
+

@@ -25,6 +25,8 @@ namespace Veterinary.Web.Models.Data
 
         public DbSet<PetType> PetTypes { get; set; }
 
+        public DbSet<PetRace> PetRaces { get; set; }
+        
         public DbSet<ServiceType> ServiceTypes { get; set; }
 
     }

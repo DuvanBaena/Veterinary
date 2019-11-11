@@ -118,7 +118,7 @@ namespace Veterinary.Web.Controllers
                     try
                     {
                         await _dataContext.SaveChangesAsync();
-                        //result = "Success";
+                       
 
                         var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
                         var tokenLink = Url.Action("ConfirmEmail", "Account", new
@@ -141,8 +141,7 @@ namespace Veterinary.Web.Controllers
                         return View(model);
 
                     }
-
-                    // return Json(result);
+                 
                 }
 
                 ModelState.AddModelError(string.Empty, response.Errors.FirstOrDefault().Description);

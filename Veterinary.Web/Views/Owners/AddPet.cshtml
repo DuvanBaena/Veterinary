@@ -21,20 +21,33 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Born" class="control-label"></label>
-            <div class="input-group mb-2">
-                <input asp-for="Born" type="search" class="form-control" id="datepicker">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><span class="fa fa-calendar"></span></div>
-                </div>
-                <span asp-validation-for="Born" class="text-danger"></span>
-            </div>
+            <label for="inputName" class="control-label">Años</label>
+            <input class="form-control" placeholder="Años" />
         </div>
 
+        <div class="form-group">
+            <label for="inputName" class="control-label">E Reproductivo</label>
+            <input class="form-control" placeholder="E Reproductivo" />
+        </div>
 
         <div class="form-group">
-            <label asp-for="ImageFile" class="control-label"></label>
-            <input asp-for="ImageFile" class="form-control" type="file" />
+            <label for="inputName" class="control-label">Frecuencia</label>
+            <input class="form-control" placeholder="Frecuencia" />
+        </div>
+
+        <div class="form-group">
+            <label for="inputName" class="control-label">Alimentación</label>
+            <input class="form-control" placeholder="Alimentación" />
+        </div>
+
+        <div class="form-group">
+            <label for="inputName" class="control-label">Color</label>
+            <input class="form-control" placeholder="Color" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PetSexId" class="control-label"></label>
+            <select asp-for="PetSexId" asp-items="Model.PetSexs" class="form-control" id="PetTypeId"></select>
         </div>
 
         <div class="form-group">
@@ -43,9 +56,20 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="PetSexId" class="control-label"></label>
-            <select asp-for="PetSexId" asp-items="Model.PetSexs" class="form-control" id="PetTypeId"></select>
-            <span asp-validation-for="PetSexId" class="text-danger"></span>
+            <label asp-for="Born" class="control-label"></label>
+            <div class="input-group mb-2">
+                <input asp-for="Born" type="search" class="form-control" id="datepicker">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><span class="fa fa-calendar"></span></div>
+                </div>               
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label asp-for="ImageFile" class="control-label"></label>
+            <input asp-for="ImageFile" class="form-control" type="file" />
         </div>
 
         <div class="form-group">
