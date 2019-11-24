@@ -76,11 +76,11 @@ else
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().Name)</th>
                             <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().ImageUrl)</th>
-                            <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().Race)</th>
+                            <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().PetRace.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().PetType.Name)</th>
                             <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().BornLocal)</th>
+                            <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().PetSex)</th>
                             <th># Histories</th>
-                            <th>@Html.DisplayNameFor(model => model.Pets.FirstOrDefault().Remarks)</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -93,11 +93,11 @@ else
                                     <img src="@Url.Content(item.ImageUrl)" alt="Image" />
                                 }
                             </td>
-                            <td>@Html.DisplayFor(modelItem => item.Race)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PetRace.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.PetType.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.BornLocal)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Histories.Count)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Remarks)</td>                       
+                            <td>@Html.DisplayFor(modelItem => item.PetSex.Name)</td>  
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.Histories.Count)</td>
                             <td class="text-center">
                                 <button class="btn btn-warning btn-responsive" onclick="EditPetItem(@item.Id)" title="Edit" id="EditPetItem"> <i class="fa fa-edit"></i></button>
                                 <button class="btn btn-info  btn-responsive" onclick="DetailPetItem(@item.Id)" title="Detail" id="DetailPetItem"> <i class="fa fa-edit"></i></button>

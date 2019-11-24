@@ -34,7 +34,7 @@ namespace Veterinary.Web.Helpers
                 Owner = await _dataContext.Owners.FindAsync(model.OwnerId),
                 PetType = await _dataContext.PetTypes.FindAsync(model.PetTypeId),
                 PetSex = await _dataContext.PetSexes.FindAsync(model.PetSexId),
-                Race = model.Race,
+                PetRace = await _dataContext.PetRaces.FindAsync(model.PetRaceId),
                 Remarks = model.Remarks,
             };
 
@@ -59,8 +59,11 @@ namespace Veterinary.Web.Helpers
                 OwnerId = pet.Owner.Id,
                 PetTypeId = pet.PetType.Id,
                 PetSexId = pet.PetSex.Id,
+                PetRaceId = pet.PetRace.Id,
+                PetRaces = _combosHelper.GetComboPetRace(),
+                PetSexs = _combosHelper.GetComboPetSex(),
                 PetTypes = _combosHelper.GetComboPetTypes(),
-                PetSexs = _combosHelper.GetComboPetSex()
+                
             };
 
         }

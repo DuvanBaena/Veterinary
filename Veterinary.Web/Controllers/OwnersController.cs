@@ -57,9 +57,14 @@ namespace Veterinary.Web.Controllers
             var owner = await _dataContext.Owners
                 .Include(o => o.User)
                 .Include(o => o.Pets)
+                //.Include(o => o.PetSex)
                 .ThenInclude(p => p.PetType)
                 .Include(o => o.Pets)
                 .ThenInclude(p => p.Histories)
+                .Include(o => o.Pets)
+                .ThenInclude(u => u.PetRace)
+                .Include(o => o.Pets)
+                .ThenInclude(u => u.PetSex)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (owner == null)
             {
@@ -83,7 +88,7 @@ namespace Veterinary.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                //var result = "Fail";
+               
                 var user = new User
                 {
 
@@ -278,8 +283,9 @@ namespace Veterinary.Web.Controllers
                 OwnerId = owner.Id,
                 PetTypes = _combosHelper.GetComboPetTypes(),
                 PetSexs = _combosHelper.GetComboPetSex(),
+                PetRaces = _combosHelper.GetComboPetRace(),
 
-            };
+        };
 
             return View(model);
         }
@@ -316,6 +322,7 @@ namespace Veterinary.Web.Controllers
 
             model.PetTypes = _combosHelper.GetComboPetTypes();
             model.PetSexs = _combosHelper.GetComboPetSex();
+            model.PetRaces = _combosHelper.GetComboPetRace();
             return View(model);
         }
 
@@ -331,6 +338,7 @@ namespace Veterinary.Web.Controllers
                 .Include(p => p.Owner)
                 .Include(p => p.PetType)
                 .Include(p => p.PetSex)
+                .Include(p => p.PetRace)
                 .FirstOrDefaultAsync(p => p.Id == id);
             if (pet == null)
             {
@@ -371,7 +379,9 @@ namespace Veterinary.Web.Controllers
                 }
             }
             model.PetTypes = _combosHelper.GetComboPetTypes();
-           // model.PetSexs = _combosHelper.GetComboPetSex();
+            model.PetSexs = _combosHelper.GetComboPetSex();
+            model.PetRaces = _combosHelper.GetComboPetRace();
+
             return View(model);
         }
 

@@ -54,6 +54,27 @@ namespace Veterinary.Web.Helpers
 
         }
 
+        public IEnumerable<SelectListItem> GetComboPetRace()
+        {
+            var list = _dataContext.PetRaces.Select(p => new SelectListItem
+            {
+                Text = p.Name,
+                Value = $"{p.Id}"
+            })
+                .OrderBy(p => p.Text)
+                .ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "[Select a Race...]",
+                Value = "0",
+            });
+
+            return list;
+
+        }
+
+
         public IEnumerable<SelectListItem> GetComboServiceTypes()
         {
             var list = _dataContext.ServiceTypes.Select(pt => new SelectListItem

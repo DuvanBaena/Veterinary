@@ -11,17 +11,17 @@
         <input type="hidden" asp-for="OwnerId" />
         <div class="form-group">
             <label asp-for="Name" class="control-label" Name="Name"></label>
-            <input asp-for="Name" class="form-control" id="Name" placeholder="Nombre de la Mascota" />          
+            <input asp-for="Name" class="form-control" id="Name" placeholder="Nombre de la Mascota" />
         </div>
 
         <div class="form-group">
             <label asp-for="PetTypeId" class="control-label"></label>
-            <select asp-for="PetTypeId" asp-items="Model.PetTypes" id="PetTypeId" class="form-control"></select>           
+            <select asp-for="PetTypeId" asp-items="Model.PetTypes" id="PetTypeId" class="form-control"></select>
         </div>
 
         <div class="form-group">
             <label asp-for="PetSexId" class="control-label"></label>
-            <select asp-for="PetSexId" asp-items="Model.PetSexs" id="PetSexId" class="form-control"></select>          
+            <select asp-for="PetSexId" asp-items="Model.PetSexs" id="PetSexId" class="form-control"></select>
         </div>
 
         <div class="form-group">
@@ -31,8 +31,8 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Race" class="control-label" Name="Race" id="Race"></label>
-            <input asp-for="Race" class="form-control" />
+            <label asp-for="Race" class="control-label"></label>
+            <select asp-for="PetRaceId" asp-items="Model.PetRaces" class="form-control" id=""></select>
             <span asp-validation-for="Race" class="text-danger"></span>
         </div>
 

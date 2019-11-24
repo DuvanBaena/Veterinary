@@ -43,7 +43,7 @@
                                     <img src="@Url.Content(item.ImageUrl)" alt="Image" />
                                 }
                             </td>
-                            <td>@Html.DisplayFor(modelItem => item.Race)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PetRace.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Born)</td>
                             <td>@Html.DisplayFor(modelItem => item.Histories.Count)</td>
                             <td class="text-center">

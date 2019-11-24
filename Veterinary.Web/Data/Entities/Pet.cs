@@ -48,6 +48,7 @@ namespace Veterinary.Web.Data.Entities
         public ICollection<History> Histories { get; set; }
 
         public ICollection<Agenda> Agendas { get; set; }
+
     }
 
 }

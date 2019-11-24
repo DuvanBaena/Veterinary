@@ -7,6 +7,8 @@ namespace Veterinary.Web.Helpers
     {
         IEnumerable<SelectListItem> GetComboPetSex();
 
+        IEnumerable<SelectListItem> GetComboPetRace();
+
         IEnumerable<SelectListItem> GetComboPetTypes();
 
         IEnumerable<SelectListItem> GetComboServiceTypes();

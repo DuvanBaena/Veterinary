@@ -67,6 +67,7 @@ namespace Veterinary.Web.Controllers
             return View(_dataContext.Pets
                 .Include(p => p.PetType)
                 .Include(p => p.Histories)
+                .Include(p => p.PetRace)
                 .Where(p => p.Owner.User.Email.ToLower().Equals(User.Identity.Name.ToLower())));
         }
 
@@ -222,6 +223,7 @@ namespace Veterinary.Web.Controllers
                 Born = DateTime.Now,
                 PetTypes = _combosHelper.GetComboPetTypes(),
                 PetSexs = _combosHelper.GetComboPetSex(),
+                PetRaces = _combosHelper.GetComboPetRace(),
                 OwnerId = owner.Id
             };
 
@@ -261,7 +263,7 @@ namespace Veterinary.Web.Controllers
                     Owner = await _dataContext.Owners.FindAsync(model.OwnerId),
                     PetType = await _dataContext.PetTypes.FindAsync(model.PetTypeId),
                     PetSex = await _dataContext.PetSexes.FindAsync(model.PetSexId),
-                    Race = model.Race,
+                    PetRace = await _dataContext.PetRaces.FindAsync(model.PetRaceId),                   
                     Remarks = model.Remarks
                 };
 
@@ -272,6 +274,7 @@ namespace Veterinary.Web.Controllers
 
             model.PetTypes = _combosHelper.GetComboPetTypes();
             model.PetSexs = _combosHelper.GetComboPetSex();
+            model.PetRaces = _combosHelper.GetComboPetRace();
             return View(model);
         }
 
