@@ -772,14 +772,23 @@ function ConceptQA() {
         data: parametros, 
         url: "/PetRaces/Create/",
         type: "POST",
-        success: function (result) {          
-            if (result === "Success") { 
+        success: function (result) {
 
-                $(document).ready(function () {
-                    location.href = '/PetRaces/Index/';
-                });
+            if (result === "Success") {                
+                console.log("Success");
+                toastr.success("", "Sucess!");
+                alert("Registro exitoso");           
             }
+
+            else if (result === "Exist") {
+                //console.log("Exist");
+               // toastr.warning("Ya existe esa raza previamente creada", "Cuidado");
+                alert("Esta mascota ya esta registrada!" );
+                location.href = '/PetRaces/Create/';               
+            }
+
             else {
+
                 $("#Name").css('border-color', 'Red');
                 toastr.error("Ingresa una raza de mascota", "alerta!");
                 $("#Name").focus();
@@ -788,9 +797,15 @@ function ConceptQA() {
                 });
                 $("#Name").keyup(function () {
                     $("#Name").css("border-color", "lightgrey");
-                });               
-            }
+                });    
+
+               }     
+          
+            },
+            error: function() {
+                console.log("Ha ocurrido un error! :(");
         }
+        
     });  
 
 }
@@ -805,4 +820,23 @@ function PetRaceEditItem(Id) {
 }
 
 
+function PetRaceDetailItem(Id) {
+    var item_to_EditPetsRace = Id;
+    if (Id !== undefined) {
+        $(document).ready(function () {
+            location.href = '/PetRaces/Details/' + item_to_EditPetsRace;
+        });
+    }
+}
 
+
+function deletePetRaceItem(Id) {
+    var item_to_deletePetRace = Id;
+    $('#deleteItem').click((e) => {
+        item_to_deletePetRace = e.currentTarget.dataset.id;
+    });
+    $("#btnYesDelete").click(function () {
+        window.location.href = '/PetRaces/Delete/' + item_to_deletePetRace;
+    });
+
+}

@@ -231,6 +231,7 @@ namespace Veterinary.Web.Controllers
             }
 
             if (owner.Pets.Count > 0)
+
             {
                 //TODO: Menssage
                 return RedirectToAction(nameof(Index));
@@ -251,10 +252,10 @@ namespace Veterinary.Web.Controllers
             }
         }
 
-        //private bool OwnerExists(int id)
-        //{
-        //    return _dataContext.Owners.Any(e => e.Id == id);
-        //}
+        private bool OwnerExists(int id)
+        {
+            return _dataContext.Owners.Any(e => e.Id == id);
+        }
 
         [HttpGet]
         public async Task<IActionResult> AddPet(int? id)

@@ -12,7 +12,7 @@
     </ol>
 </nav>
 <p>
-    <button class="btn btn-primary btn-lg btn-responsive" onclick=CreatePetTypeItem() title="Create"> <i class="fa fa-plus-square"></i></button>
+    <button class="btn btn-primary btn-lg btn-responsive" onclick="CreatePetTypeItem()" title="Create"> <i class="fa fa-plus-square"></i></button>
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -36,7 +36,7 @@
                             <td class="text-center">
                                 <button class="btn btn-warning btn-responsive" onclick="EditPetTypeItem(@item.Id)" title="Edit"><i class="fa fa-edit"></i></button>
                                 <button class="btn btn-primary btn-responsive"  btn-responsive" onclick="DetailPetTypeItem(@item.Id)" title="Return"><i class="fa fa-search-plus"></i></button>
-                                <button class="btn btn-danger btn-responsive" onclick="deletePetTypeItem(@item.Id)" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-danger btn-responsive" onclick="deletePetRaceItem(@item.Id)" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     }

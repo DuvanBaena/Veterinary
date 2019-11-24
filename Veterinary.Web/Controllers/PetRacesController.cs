@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Veterinary.Web.Data.Entities;
 using Veterinary.Web.Models.Data;
@@ -13,16 +15,16 @@ namespace Veterinary.Web.Controllers
     [Authorize(Roles = "Admin")]
     public class PetRacesController : Controller
     {
-        private readonly DataContext _context;
+        private readonly DataContext _dataContext;
 
         public PetRacesController(DataContext context)
         {
-           _context = context;
+            _dataContext = context;
         }
 
         public async Task<ActionResult> Index()
         {
-           return View(await _context.PetRaces.ToListAsync());
+           return View(await _dataContext.PetRaces.ToListAsync());
         }
 
 
@@ -34,25 +36,33 @@ namespace Veterinary.Web.Controllers
         [HttpPost]
         public async Task<JsonResult> Create(PetRace model)
         {
-            var result = "Fail";
+            var message = string.Empty;
+
+            var race = await _dataContext.PetRaces
+                .FirstOrDefaultAsync(o => o.Name == model.Name);
 
             if (ModelState.IsValid)
             {
-                _context.Add(model); 
-
+                _dataContext.Add(model);
                 try
                 {
-                    await _context.SaveChangesAsync();
-                    result = "Success";
-                    //Todo: Refactor retur hredirect
+                    if (race != null)
+                    {
+                        message = "Exist";
+
+                    }
+                    else
+                    {
+                        message = "Success";
+                        await _dataContext.SaveChangesAsync();
+                    }
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError(string.Empty, ex.ToString());                   
+                    ModelState.AddModelError(string.Empty, ex.ToString());
                 }
             }
-
-            return Json(result);
+            return Json(message);
         }
 
 
@@ -63,7 +73,7 @@ namespace Veterinary.Web.Controllers
                 return NotFound();
             }
 
-            var petRace = await _context.PetRaces.FindAsync(id);
+            var petRace = await _dataContext.PetRaces.FindAsync(id);
             if (petRace == null)
             {
                 return NotFound();
@@ -79,8 +89,8 @@ namespace Veterinary.Web.Controllers
             {
                 try
                 {
-                    _context.Update(petRace);
-                    await _context.SaveChangesAsync();
+                    _dataContext.Update(petRace);
+                    await _dataContext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -100,7 +110,63 @@ namespace Veterinary.Web.Controllers
 
         private bool PetRaceExists(int id)
         {
-            return _context.PetRaces.Any(e => e.Id == id);
+            return _dataContext.PetRaces.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var petRace = await _dataContext.PetRaces.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (petRace == null)
+            {
+                return NotFound();
+            }
+
+            return View(petRace);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var petRace = await _dataContext.PetRaces
+                .Include(pr => pr.Pets)
+                .FirstOrDefaultAsync(pr => pr.Id == id);
+
+            if (petRace == null)
+            {
+                return NotFound();
+            }
+
+            if (petRace.Pets.Count > 0)
+            {
+
+                ModelState.AddModelError(string.Empty, "The pet type can´t be removed ");
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                _dataContext.PetRaces.Remove(petRace);
+                await _dataContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError(string.Empty, ex.ToString());
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+
     }
 }
