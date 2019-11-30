@@ -45,7 +45,7 @@ namespace Veterinary.Web.Controllers
             {
                 _dataContext.Add(model);
                 try
-                {
+                { 
                     if (race != null)
                     {
                         message = "Exist";

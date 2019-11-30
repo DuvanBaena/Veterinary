@@ -758,57 +758,58 @@ function PetRaceIndexItem() {
 }
 
 
-function ConceptQA() {
+//function ConceptQA() {
 
-    toastrValidated();
+//    toastrValidated();
 
-    var name = document.getElementById('Name').value;
+//    var name = document.getElementById('Name').value;
 
-    var parametros = {
-        "Name": name
-    };
+//    var parametros = {
+//        "Name": name
+//    };
 
-    $.ajax({ 
-        data: parametros, 
-        url: "/PetRaces/Create/",
-        type: "POST",
-        success: function (result) {
+//    $.ajax({ 
+//        data: parametros, 
+//        url: "/PetRaces/Create/",
+//        type: "POST",
+//        dataType: 'json',
+//        success: function (result) {           
 
-            if (result === "Success") {                
-                console.log("Success");
-                toastr.success("", "Sucess!");
-                alert("Registro exitoso");           
-            }
+//            if (result === "Success") {                
+//                console.log("Success");
+//                toastr.success("Ya existe esa raza previamente creada","Sucess!");
+//                alert("Registro exitoso");           
+//            }
 
-            else if (result === "Exist") {
-                //console.log("Exist");
-               // toastr.warning("Ya existe esa raza previamente creada", "Cuidado");
-                alert("Esta mascota ya esta registrada!" );
-                location.href = '/PetRaces/Create/';               
-            }
+//            else if (result === "Exist") {
+//                console.log(result);
+//                toastr.warning("Ya existe esa raza previamente creada", "Cuidado");
+//               // alert("Esta mascota ya esta registrada!" );
+//                location.href = '/PetRaces/Create/';               
+//            }
 
-            else {
+//            else {
 
-                $("#Name").css('border-color', 'Red');
-                toastr.error("Ingresa una raza de mascota", "alerta!");
-                $("#Name").focus();
-                $("#Name").keydown(function () {
-                    $("#Name").css("border-color", "lightgrey");
-                });
-                $("#Name").keyup(function () {
-                    $("#Name").css("border-color", "lightgrey");
-                });    
+//                $("#Name").css('border-color', 'Red');
+//                toastr.error("Ingresa una raza de mascota", "alerta!");
+//                $("#Name").focus();
+//                $("#Name").keydown(function () {
+//                    $("#Name").css("border-color", "lightgrey");
+//                });
+//                $("#Name").keyup(function () {
+//                    $("#Name").css("border-color", "lightgrey");
+//                });    
 
-               }     
+//               }     
           
-            },
-            error: function() {
-                console.log("Ha ocurrido un error! :(");
-        }
+//            },
+//            error: function() {
+//                console.log("Ha ocurrido un error! :(");
+//        }
         
-    });  
+//    });  
 
-}
+//}
 
 function PetRaceEditItem(Id) {
     var item_to_EditPetsRace = Id;
@@ -837,6 +838,78 @@ function deletePetRaceItem(Id) {
     });
     $("#btnYesDelete").click(function () {
         window.location.href = '/PetRaces/Delete/' + item_to_deletePetRace;
+    });
+
+}
+
+
+function ConceptQA() {
+
+    toastrValidated();
+
+    var formulario = document.getElementById('PetRace');
+
+    formulario.addEventListener('submit', function (e) {
+        e.preventDefault();  
+
+        var name = document.getElementById('Name').value;
+
+        var parametros =
+        {
+             "Name": name
+        };
+
+        $.ajax({            
+            data: parametros,          
+            type: "POST",          
+            dataType: "json",            
+            url: "/PetRaces/Create/"
+        })
+        
+         .done(function (result, textStatus, jqXHR) {
+
+             try {
+
+                 if (result === "Success") {
+                     toastr.success("Mascota creada de forma correcta", "Felicitaciones!");
+                 }
+                 else if (result === "Exist") {
+                     toastr.warning("Ya existe esa raza previamente creada", "Cuidado");
+                     $("#Name").focus();
+                 }
+                 else {
+                     
+                     $("#Name").css('border-color', 'Red');
+                     toastr.error("Ingresa una raza de mascota", "alerta!");
+                     $("#Name").focus();
+
+                     $("#Name").keyup(function () {
+                         $("#Name").css("border-color", "lightgrey");                        
+                     });
+
+                     $("#Name").keydown(function () {
+                        $("#Name").css("border-color", "lightgrey");
+                         
+                     });
+
+                 }
+
+                 return false;
+
+             }
+             catch (error) {
+                 console.error(error);
+             }
+
+           
+         })
+         .fail(function (jqXHR, textStatus, errorThrown) {
+             if (console && console.log) {
+                 console.log("La solicitud a fallado: " + textStatus);
+             }
+         });
+       
+
     });
 
 }

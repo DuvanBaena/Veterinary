@@ -397,6 +397,8 @@ namespace Veterinary.Web.Controllers
                 .ThenInclude(o => o.User)
                 .Include(p => p.Histories)
                 .ThenInclude(h => h.ServiceType)
+                .Include(p => p.PetRace)
+                .Include(p => p.PetSex)
                 .FirstOrDefaultAsync(o => o.Id == id.Value);
             if (pet == null)
             {
