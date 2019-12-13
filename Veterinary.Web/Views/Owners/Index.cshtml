@@ -41,7 +41,7 @@
                             <td>@Html.DisplayFor(modelItem => item.User.PhoneNumber)</td>
                             <td>@Html.DisplayFor(modelItem => item.Pets.Count)</td>
                             <td class="text-center">
-                                <button class="btn btn-warning" id="EditItem" onclick="EditItem(@item.Id)" title="Edit"><i class="fa fa-edit"></i></button>
+                                @*<button class="btn btn-warning" id="EditItem" onclick="EditItem(@item.Id)" title="Edit"><i class="fa fa-edit"></i></button>*@
                                 <button class="btn btn-info" id="DetailsItem" onclick="DetailsItem(@item.Id)" title="Detail"><i class="fa fa-search-plus"></i></button>
                                 <button class="btn btn-danger " title="Delete" id="DeleteItem" onclick="DeleteItem(@item.Id)" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                             </td>
