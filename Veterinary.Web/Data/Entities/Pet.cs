@@ -36,6 +36,14 @@ namespace Veterinary.Web.Data.Entities
         [Display(Name = "Born")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime BornLocal => Born;
+        public int Age { get; set; }
+
+        public string Reproductive { get; set; }
+
+        public string Food { get; set; }
+
+        public string Color { get; set; }
+        public string Frequency { get; set; }
 
         public PetSex PetSex { get; set; }
 
@@ -43,12 +51,12 @@ namespace Veterinary.Web.Data.Entities
 
         public PetRace PetRace { get; set; }
 
-        public Owner Owner { get; set; }
+        public Owner Owner { get; set; }   
 
         public ICollection<History> Histories { get; set; }
 
         public ICollection<Agenda> Agendas { get; set; }
-
+        
     }
 
 }

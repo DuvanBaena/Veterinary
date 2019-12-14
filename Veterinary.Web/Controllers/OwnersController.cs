@@ -280,7 +280,7 @@ namespace Veterinary.Web.Controllers
             var model = new PetViewModel
             {
                 Born = DateTime.Today,
-                OwnerId = owner.Id,
+                OwnerId = owner.Id,               
                 PetTypes = _combosHelper.GetComboPetTypes(),
                 PetSexs = _combosHelper.GetComboPetSex(),
                 PetRaces = _combosHelper.GetComboPetRace(),

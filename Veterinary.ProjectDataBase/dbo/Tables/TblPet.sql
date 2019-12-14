@@ -7,6 +7,10 @@
     [Remarks]   NVARCHAR (MAX) NULL,
     [PetTypeId] INT            NULL,
     [OwnerId]   INT            NULL,
+    [Age]       INT            Null,
+    [Reproductive] NCHAR(10) NULL, 
+    [Food] NCHAR(10) NULL, 
+    [Color] NCHAR(20) NULL, 
     CONSTRAINT [PK_TblPet] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_TblPet_TblOwner_OwnerId] FOREIGN KEY ([OwnerId]) REFERENCES [dbo].[TblOwner] ([Id]),
     CONSTRAINT [FK_TblPet_TblPetType_PetTypeId] FOREIGN KEY ([PetTypeId]) REFERENCES [dbo].[TblPetType] ([Id])
