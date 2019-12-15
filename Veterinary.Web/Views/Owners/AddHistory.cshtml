@@ -25,6 +25,15 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
         <script type="text/javascript" src="~/js/site.js"></script>
+        <script>
+            $('#datepicker').datepicker({
+                format: 'yyyy/mm/dd',
+                weekStart: 1,
+                daysOfWeekHighlighted: "6,0",
+                autoclose: true,
+                todayHighlight: true,
+            });
+        </script>
     }
 }
 

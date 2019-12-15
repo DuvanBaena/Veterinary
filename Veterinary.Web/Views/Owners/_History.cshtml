@@ -1,8 +1,13 @@
 ﻿@model Veterinary.Web.Models.HistoryViewModel
+
 <div class="form-group">
     <label asp-for="Date" class="control-label"></label>
-    <input asp-for="Date" class="form-control" id="Date" />
-   
+    <div class="input-group mb-2">
+        <input asp-for="Date" type="search" class="form-control" id="datepicker">
+        <div class="input-group-prepend">
+            <div class="input-group-text"><span class="fa fa-calendar"></span></div>
+        </div>
+    </div>
 </div>
 
 <div class="form-group">
@@ -13,12 +18,16 @@
 
 <div class="form-group">
     <label asp-for="Description" class="control-label"></label>
-    <input asp-for="Description" class="form-control" id="Description"/>
+    <input asp-for="Description" class="form-control" id="Description" />
     @*<span asp-validation-for="Description" class="text-danger"></span>*@
 </div>
 
 <div class="form-group">
-    <label asp-for="Remarks" class="control-label"></label>
-    <textarea asp-for="Remarks" class="form-control" id="Remarks"></textarea>
-    @*<span asp-validation-for="Remarks" class="text-danger"></span>*@
+        <label asp-for="Remarks" class="control-label"></label>
+        <textarea asp-for="Remarks" class="form-control" id="Remarks" rows="7"></textarea>
+        <span asp-validation-for="Remarks" class="text-danger"></span>
 </div>
+
+
+
+

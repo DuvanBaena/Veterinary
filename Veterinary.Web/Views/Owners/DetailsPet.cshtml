@@ -4,7 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Owners/Details" onclick="DetailsItem(@Model.Owner.Id)">Clientes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Editar Mascotas</li>
+    </ol>
+</nav>
 <div class="container" id="advanced-search-form">
     <div class="col-12 col-md-12 text-center">
         @if (!string.IsNullOrEmpty(Model.ImageUrl))
@@ -12,40 +17,39 @@
             <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:300px;height:300px;max-height: 100%; width: auto;" />
         }
     </div>
-    <div class="form-row">
-        <div class="form-group">
-            <label for="inputAddress2">Owner</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Owner.User.FullName)">
-        </div>
-        <div class="form-group">
-            <label for="inputAddress2"> @Html.DisplayNameFor(model => model.Name)</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Name)">
-        </div>
+    <fieldset disabled>
 
-        <div class="form-group">
-            <label for="inputAddress2"> @Html.DisplayNameFor(model => model.Race)</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="" value=" @Html.DisplayFor(model => model.PetRace.Name)">
-        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="inputAddress2">Owner</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Owner.User.FullName)">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2"> @Html.DisplayNameFor(model => model.Name)</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Name)">
+            </div>
 
-        <div class="form-group">
-            <label>@Html.DisplayNameFor(model => model.Born)</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Born)">
-        </div>
+            <div class="form-group">
+                <label for="inputAddress2"> @Html.DisplayNameFor(model => model.Race)</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="" value=" @Html.DisplayFor(model => model.PetRace.Name)">
+            </div>
 
-        <div class="form-group">
-            <label for="inputAddress2">@Html.DisplayNameFor(model => model.Remarks)</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Remarks)">
-        </div>
+            <div class="form-group">
+                <label>@Html.DisplayNameFor(model => model.Born)</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Born)">
+            </div>
 
-        <div class="form-group">
-            <label for="inputAddress2"> @Html.DisplayNameFor(model => model.PetSex)</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="" value=" @Html.DisplayFor(model => model.PetSex.Name)">
+            <div class="form-group">
+                <label for="inputAddress2">@Html.DisplayNameFor(model => model.Remarks)</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" @Html.DisplayFor(model => model.Remarks)">
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress2"> @Html.DisplayNameFor(model => model.PetSex)</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="" value=" @Html.DisplayFor(model => model.PetSex.Name)">
+            </div>
         </div>
-    </div>
-    @*<div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>*@
+    </fieldset>
 </div>
 <div class="form-group">
     <div id="BtnRight">

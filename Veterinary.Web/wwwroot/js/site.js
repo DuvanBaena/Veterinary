@@ -232,6 +232,12 @@ function DeletePetItem(Id) {
     });
 }
 
+
+function ReturnIndexOwner() {
+    location.href = '/Owners/Index/';
+}
+
+
 // validation AddPet
 
 function CreateAddPet() {

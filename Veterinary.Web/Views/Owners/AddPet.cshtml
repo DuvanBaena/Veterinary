@@ -4,6 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">        
+        <li class="breadcrumb-item"><a href="/Owners/Details" onclick="OwnerDetailItem(@Model.OwnerId)">Clientes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Crear Mascotas</li>
+    </ol>
+</nav>
+
 <div class="container" id="advanced-search-form">
     <form asp-action="AddPet" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
