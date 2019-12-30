@@ -13,6 +13,7 @@ namespace Veterinary.Web.Data.Entities
         public ICollection<Pet> Pets { get; set; }
 
         public ICollection<Agenda> Agendas { get; set; }
+     
     }
 
 }

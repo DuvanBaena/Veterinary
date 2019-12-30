@@ -123,7 +123,7 @@ namespace Veterinary.Web.Helpers
                 ImageUrl = pet.ImageFullPath,
                 Name = pet.Name,
                 PetType = pet.PetType.Name,
-                Race = pet.Race,
+                PetRace = pet.PetRace.Name,
                 Remarks = pet.Remarks
             };
         }

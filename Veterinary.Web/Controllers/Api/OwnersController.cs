@@ -32,11 +32,12 @@ namespace Veterinary.Web.Controllers.Api
 
             var owner = await _dataContext.Owners
                 .Include(o => o.User)
+                .Include(o => o.Pets)        
+                .ThenInclude(p => p.PetType)                
                 .Include(o => o.Pets)
-                .ThenInclude(p => p.PetType)
-                .Include(o => o.Pets)
-                .ThenInclude(p => p.Histories)
-                .ThenInclude(h => h.ServiceType)
+                .ThenInclude(p => p.PetRace.Pets)
+                .ThenInclude(p => p.Histories)                
+                .ThenInclude(h => h.ServiceType)               
                 .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower());
 
             var response = new OwnerResponse
@@ -54,10 +55,12 @@ namespace Veterinary.Web.Controllers.Api
                     Born = p.Born,
                     Id = p.Id,
                     ImageUrl = p.ImageFullPath,
-                    Name = p.Name,
-                    Race = p.Race,
+                    Name = p.Name,                    
                     Remarks = p.Remarks,
                     PetType = p.PetType.Name,
+                    PetRace = p.PetRace.Name,
+                  
+                    
                     Histories = p.Histories.Select(h => new HistoryResponse
                     {
                         Date = h.Date,

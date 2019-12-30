@@ -10,15 +10,15 @@ namespace Veterinary.Common.Models
 
         public string Name { get; set; }
 
-        public string ImageUrl { get; set; }
-
-        public string Race { get; set; }
+        public string ImageUrl { get; set; }      
 
         public DateTime Born { get; set; }
 
         public string Remarks { get; set; }
 
         public string PetType { get; set; }
+
+        public string PetRace { get; set; }
 
         public ICollection<HistoryResponse> Histories { get; set; }
     }
