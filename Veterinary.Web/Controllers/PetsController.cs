@@ -31,6 +31,7 @@ namespace Veterinary.Web.Controllers
                 .Include(p => p.Owner)
                 .ThenInclude(o => o.User)
                 .Include(p => p.PetType)
+                .Include(p => p.PetRace)
                 .Include(p => p.Histories));
         }
 
@@ -65,7 +66,9 @@ namespace Veterinary.Web.Controllers
             var pet = await _dataContext.Pets
                 .Include(p => p.Owner)
                 .Include(p => p.PetType)
+                .Include(p => p.PetRace)
                 .FirstOrDefaultAsync(p => p.Id == id.Value);
+
             if (pet == null)
             {
                 return NotFound();
@@ -80,7 +83,7 @@ namespace Veterinary.Web.Controllers
                 OwnerId = pet.Owner.Id,
                 PetTypeId = pet.PetType.Id,
                 PetTypes = _combosHelper.GetComboPetTypes(),
-                Race = pet.Race,
+                PetRaces = _combosHelper.GetComboPetRace(),               
                 Remarks = pet.Remarks
             };
 
@@ -120,8 +123,8 @@ namespace Veterinary.Web.Controllers
                     ImageUrl = path,
                     Name = model.Name,
                     Owner = await _dataContext.Owners.FindAsync(model.OwnerId),
-                    PetType = await _dataContext.PetTypes.FindAsync(model.PetTypeId),
-                    Race = model.Race,
+                    PetType = await _dataContext.PetTypes.FindAsync(model.PetTypeId),                   
+                    PetRace = await _dataContext.PetRaces.FindAsync(model.PetRaceId),
                     Remarks = model.Remarks
                 };
 
@@ -137,7 +140,7 @@ namespace Veterinary.Web.Controllers
                     return View(model);
                 }
             }
-
+          
             return View(model);
         }
 
