@@ -82,6 +82,8 @@ namespace Veterinary.Web.Controllers
             var pet = await _dataContext.Pets
                 .Include(p => p.Owner)
                 .Include(p => p.PetType)
+                .Include(p => p.PetRace)
+                .Include(p => p.PetSex)
                 .FirstOrDefaultAsync(p => p.Id == id.Value);
 
             if (pet == null)
@@ -89,7 +91,7 @@ namespace Veterinary.Web.Controllers
                 return NotFound();
             }
 
-            var model = new PetViewModel
+            var view = new PetViewModel
             {
                 Born = pet.Born,
                 Id = pet.Id,
@@ -98,11 +100,14 @@ namespace Veterinary.Web.Controllers
                 OwnerId = pet.Owner.Id,
                 PetTypeId = pet.PetType.Id,
                 PetTypes = _combosHelper.GetComboPetTypes(),
-                Race = pet.Race,
+                PetSexId = pet.PetSex.Id,
+                PetSexs = _combosHelper.GetComboPetSex(),
+                PetRaceId = pet.PetRace.Id,
+                PetRaces = _combosHelper.GetComboPetRace(),
                 Remarks = pet.Remarks
             };
 
-            return View(model);
+            return View(view);
         }
 
         [HttpPost]
@@ -129,7 +134,7 @@ namespace Veterinary.Web.Controllers
                     }
 
                     path = $"~/images/Pets/{file}";
-                }
+                }                      
 
                 var pet = new Pet
                 {
@@ -139,13 +144,22 @@ namespace Veterinary.Web.Controllers
                     Name = model.Name,
                     Owner = await _dataContext.Owners.FindAsync(model.OwnerId),
                     PetType = await _dataContext.PetTypes.FindAsync(model.PetTypeId),
-                    Race = model.Race,
+                    PetRace = await _dataContext.PetRaces.FindAsync(model.PetRaceId),
+                    PetSex = await _dataContext.PetSexes.FindAsync(model.PetSexId),
                     Remarks = model.Remarks
                 };
 
-                _dataContext.Pets.Update(pet);
-                await _dataContext.SaveChangesAsync();
-                return RedirectToAction(nameof(MyPets));
+                try
+                {
+                    _dataContext.Pets.Update(pet);
+                    await _dataContext.SaveChangesAsync();
+                    return RedirectToAction(nameof(MyPets));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.ToString());
+                    return View(model);
+                }
             }
             model.PetTypes = _combosHelper.GetComboPetTypes();
             return View(model);

@@ -11,56 +11,7 @@
         <input type="hidden" asp-for="OwnerId" />
         <input type="hidden" asp-for="ImageUrl" />
 
-        <div class="col-12 col-md-12 text-center">
-
-            @if (!string.IsNullOrEmpty(Model.ImageUrl))
-            {
-                <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:300px;height:300px;max-height: 100%; width: auto;" />
-
-            }
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" id="Name" placeholder="Nombre de la Mascosta" />
-            <span asp-validation-for="ImageFile" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="PetRace" class="control-label"></label>
-            <select asp-for="PetRaceId" asp-items="Model.PetRaces" class="form-control"></select>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Born" class="control-label"></label>
-            <div class="input-group mb-2">
-                <input asp-for="Born" type="search" class="form-control" id="datepicker">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"><span class="fa fa-calendar"></span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ImageFile" class="control-label"></label>
-            <input asp-for="ImageFile" class="form-control" type="file" />
-            <span asp-validation-for="ImageFile" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="PetTypeId" class="control-label"></label>
-            <select asp-for="PetTypeId" asp-items="Model.PetTypes" class="form-control" id="PetTypeId"></select>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="PetSexId" class="control-label"></label>
-            <select asp-for="PetSexId" asp-items="Model.PetSexs" class="form-control" id=""></select>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Remarks" class="control-label"></label>
-            <textarea asp-for="Remarks" class="form-control"></textarea>
-        </div>
+        <partial name="_Editpet" />
 
         <div class="clearfix"></div>
         <div class="text-center">
