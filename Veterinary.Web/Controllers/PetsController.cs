@@ -67,6 +67,7 @@ namespace Veterinary.Web.Controllers
                 .Include(p => p.Owner)
                 .Include(p => p.PetType)
                 .Include(p => p.PetRace)
+                .Include(p => p.PetSex)
                 .FirstOrDefaultAsync(p => p.Id == id.Value);
 
             if (pet == null)
@@ -83,7 +84,10 @@ namespace Veterinary.Web.Controllers
                 OwnerId = pet.Owner.Id,
                 PetTypeId = pet.PetType.Id,
                 PetTypes = _combosHelper.GetComboPetTypes(),
-                PetRaces = _combosHelper.GetComboPetRace(),               
+                PetSexId = pet.PetSex.Id,
+                PetSexs = _combosHelper.GetComboPetSex(),
+                PetRaceId = pet.PetRace.Id,
+                PetRaces = _combosHelper.GetComboPetRace(),
                 Remarks = pet.Remarks
             };
 
@@ -95,6 +99,7 @@ namespace Veterinary.Web.Controllers
         public async Task<IActionResult> Edit(PetViewModel model)
         {
             if (ModelState.IsValid)
+
             {
                 var path = model.ImageUrl;
 
@@ -125,6 +130,7 @@ namespace Veterinary.Web.Controllers
                     Owner = await _dataContext.Owners.FindAsync(model.OwnerId),
                     PetType = await _dataContext.PetTypes.FindAsync(model.PetTypeId),                   
                     PetRace = await _dataContext.PetRaces.FindAsync(model.PetRaceId),
+                    PetSex = await _dataContext.PetSexes.FindAsync(model.PetSexId),
                     Remarks = model.Remarks
                 };
 
@@ -141,6 +147,7 @@ namespace Veterinary.Web.Controllers
                 }
             }
           
+           
             return View(model);
         }
 
