@@ -19,7 +19,7 @@ namespace Veterinary.Web.Data.Entities
         public string ImageUrl { get; set; }
 
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        //public string Race { get; set; }
+        public string Race { get; set; }
 
         [Display(Name = "Born")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]       

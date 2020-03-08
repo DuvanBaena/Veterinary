@@ -42,18 +42,6 @@ namespace Veterinary.Web.Controllers.Api
                 return BadRequest("Not valid owner.");
             }
 
-            var petSex = await _dataContext.PetSexes.FindAsync(request.SexId);
-            if (petSex == null)
-            {
-                return BadRequest("Not valid pet type.");
-            }
-
-            var petRace = await _dataContext.PetRaces.FindAsync(request.RaceId);
-            if (petRace == null)
-            {
-                return BadRequest("Not valid pet type.");
-            }
-
             var petType = await _dataContext.PetTypes.FindAsync(request.PetTypeId);
             if (petType == null)
             {
@@ -83,9 +71,7 @@ namespace Veterinary.Web.Controllers.Api
                 Name = request.Name,
                 Owner = owner,
                 PetType = petType,
-                PetRace = petRace,
-                PetSex = petSex,
-                //Race = request.Race,
+                Race = request.Race,
                 Remarks = request.Remarks
             };
 
@@ -111,12 +97,6 @@ namespace Veterinary.Web.Controllers.Api
             if (oldPet == null)
             {
                 return BadRequest("Pet doesn't exists.");
-            }
-
-            var petRace = await _dataContext.PetRaces.FindAsync(request.RaceId);
-            if (petRace == null)
-            {
-                return BadRequest("Not valid pet type.");
             }
 
             var petType = await _dataContext.PetTypes.FindAsync(request.PetTypeId);
@@ -145,7 +125,7 @@ namespace Veterinary.Web.Controllers.Api
             oldPet.ImageUrl = imageUrl;
             oldPet.Name = request.Name;
             oldPet.PetType = petType;
-            oldPet.PetRace = petRace;
+            oldPet.Race = request.Race;
             oldPet.Remarks = request.Remarks;
 
             _dataContext.Pets.Update(oldPet);

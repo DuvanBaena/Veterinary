@@ -57,7 +57,8 @@ namespace Veterinary.Web.Helpers
                 ImageUrl = pet.ImageUrl,
                 Name = pet.Name,
                 Owner = pet.Owner,
-                PetType = pet.PetType,             
+                PetType = pet.PetType,
+                Race = pet.Race,
                 Remarks = pet.Remarks,
                 Id = pet.Id,
                 OwnerId = pet.Owner.Id,
@@ -123,7 +124,6 @@ namespace Veterinary.Web.Helpers
                 Name = pet.Name,
                 PetType = pet.PetType.Name,
                 PetRace = pet.PetRace.Name,
-                PetSex = pet.PetSex.Name,
                 Remarks = pet.Remarks
             };
         }
