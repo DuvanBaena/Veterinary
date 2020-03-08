@@ -19,7 +19,9 @@ namespace Veterinary.Web.Models
         [Display(Name = "Pet Sex")]
         [Range(1, int.MaxValue, ErrorMessage = "You must select a pet Sex.")]     
         public int PetSexId {  get; set; }
-        public int PetRaceId { get; set; }       
+
+        [Display(Name = "Pet Race")]
+        public int PetRaceId { get; set; }
 
         [Display(Name = "Image")]
         public IFormFile ImageFile { get; set; }   

@@ -14,7 +14,11 @@ namespace Veterinary.Common.Models
 
        public string Race { get; set; }
 
-       public int OwnerId { get; set; }
+        public int SexId { get; set; }
+
+        public int RaceId { get; set; }
+
+        public int OwnerId { get; set; }
 
        public int PetTypeId { get; set; }
 
