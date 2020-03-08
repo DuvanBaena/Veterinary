@@ -119,6 +119,18 @@ namespace Veterinary.Web.Controllers.Api
                 return BadRequest("Not valid pet type.");
             }
 
+            var petRace = await _dataContext.PetRaces.FindAsync(request.RaceId);
+            if (petRace == null)
+            {
+                return BadRequest("Not valid pet type.");
+            }
+
+            var petSex = await _dataContext.PetSexes.FindAsync(request.SexId);
+            if (petSex == null)
+            {
+                return BadRequest("Not valid pet type.");
+            }
+
             var imageUrl = oldPet.ImageUrl;
             if (request.ImageArray != null && request.ImageArray.Length > 0)
             {
@@ -138,8 +150,9 @@ namespace Veterinary.Web.Controllers.Api
             oldPet.Born = request.Born.ToUniversalTime();
             oldPet.ImageUrl = imageUrl;
             oldPet.Name = request.Name;
-            oldPet.PetType = petType;
-            oldPet.Race = request.Race;
+            oldPet.PetType = petType;            
+            oldPet.PetRace = petRace;
+            oldPet.PetSex = petSex;
             oldPet.Remarks = request.Remarks;
 
             _dataContext.Pets.Update(oldPet);
