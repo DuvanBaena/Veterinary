@@ -9,7 +9,7 @@ namespace Veterinary.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        [Display(Name = "Pet Sex Type")]
+        [Display(Name = "Pet Sex")]
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Name { get; set; }

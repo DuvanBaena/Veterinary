@@ -20,6 +20,8 @@ namespace Veterinary.Common.Models
 
         public string PetRace { get; set; }
 
+        public string PetSex { get; set; }
+
         public ICollection<HistoryResponse> Histories { get; set; }
     }
 }

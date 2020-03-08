@@ -10,11 +10,13 @@ namespace Veterinary.Common.Models
        public int Id { get; set; }
 
        [Required]
-       public string Name { get; set; }
+       public string Name { get; set; }      
 
-       public string Race { get; set; }
+        public int SexId { get; set; }
 
-       public int OwnerId { get; set; }
+        public int RaceId { get; set; }
+
+        public int OwnerId { get; set; }
 
        public int PetTypeId { get; set; }
 
