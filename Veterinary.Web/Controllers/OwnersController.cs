@@ -368,7 +368,7 @@ namespace Veterinary.Web.Controllers
                 try
                 {
                     _dataContext.Pets.Update(pet);
-                    await _dataContext.SaveChangesAsync();
+                    await _dataContext.SaveChangesAsync();                    
                     return RedirectToAction($"Details/{model.OwnerId}");
                 }
                 catch (Exception ex)

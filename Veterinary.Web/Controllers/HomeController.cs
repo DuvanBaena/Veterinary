@@ -152,8 +152,10 @@ namespace Veterinary.Web.Controllers
                 try
                 {
                     _dataContext.Pets.Update(pet);
+
                     await _dataContext.SaveChangesAsync();
                     return RedirectToAction(nameof(MyPets));
+
                 }
                 catch (Exception ex)
                 {

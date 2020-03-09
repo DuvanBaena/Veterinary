@@ -8,7 +8,6 @@
     [PasswordHash]         NVARCHAR (MAX)     NULL,
     [SecurityStamp]        NVARCHAR (MAX)     NULL,
     [ConcurrencyStamp]     NVARCHAR (MAX)     NULL,
-    [PhoneNumber]          NVARCHAR (MAX)     NULL,
     [PhoneNumberConfirmed] BIT                NOT NULL,
     [TwoFactorEnabled]     BIT                NOT NULL,
     [LockoutEnd]           DATETIMEOFFSET (7) NULL,
@@ -19,8 +18,8 @@
     [LastName]             NVARCHAR (MAX)     NULL,
     [Address]              NVARCHAR (100)     NULL,
     [BusinessName]         NVARCHAR (MAX)     NULL,
+    [PhoneNumber]          NVARCHAR (MAX)     NULL,
     [LandlinePhone]        NVARCHAR (50)      NULL,
-    [gender]               NCHAR (25)         NULL,
     CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

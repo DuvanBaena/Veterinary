@@ -64,6 +64,8 @@
   <ItemGroup>
     <Build Include="dbo\Tables\AspNetRoles.sql" />
     <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\TblPetRace.sql" />
+    <Build Include="dbo\Tables\TblPetSex.sql" />
     <Build Include="dbo\Tables\TblPetType.sql" />
     <Build Include="dbo\Tables\TblServiceType.sql" />
     <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
@@ -76,6 +78,5 @@
     <Build Include="dbo\Tables\TblPet.sql" />
     <Build Include="dbo\Tables\TblAgenda.sql" />
     <Build Include="dbo\Tables\TblHistory.sql" />
-    <Build Include="dbo\Tables\TblPetSex.sql" />
   </ItemGroup>
 </Project>
