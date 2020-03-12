@@ -16,7 +16,7 @@ namespace Veterinary.Web.Data.Entities
         public string Name { get; set; }
 
         [Display(Name = "Image")]       
-        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         public string ImageUrl { get; set; }
 
         //public string Race { get; set; }
