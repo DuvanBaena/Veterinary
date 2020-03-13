@@ -5,6 +5,6 @@ namespace Veterinary.Web.Helpers
 {
     public interface IImageHelper
     {
-        Task<string> UploadImageAsync(IFormFile imageFile);
+        Task<string> UploadImageAsync(IFormFile imageFile, string folder);
     }
 }

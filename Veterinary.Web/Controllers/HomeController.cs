@@ -248,7 +248,7 @@ namespace Veterinary.Web.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create(PetViewModel model)
-        {
+         {
             if (ModelState.IsValid)
             {
                 var path = string.Empty;

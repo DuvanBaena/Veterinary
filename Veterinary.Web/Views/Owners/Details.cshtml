@@ -5,12 +5,12 @@
 }
 
 
- <nav aria-label="breadcrumb">
-     <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="/Owners/Index">Clientes</a></li>        
-         <li class="breadcrumb-item active" aria-current="page">Detalles Clientes</li>
-     </ol>
- </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Owners/Index">Clientes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalles Clientes</li>
+    </ol>
+</nav>
 
 <div class="container" id="advanced-search-form">
     <form>
@@ -72,7 +72,13 @@
 
 @if (Model.Pets.Count == 0)
 {
-    <h4>Not Pets Added yet</h4>
+ 
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Atención!</strong> Not Pets Added yet.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
 }
 else
@@ -99,16 +105,18 @@ else
                     <tbody>
                         @foreach (var item in Model.Pets)
                         {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@if (!string.IsNullOrEmpty(item.ImageUrl)){
-                                    <img src="@Url.Content(item.ImageUrl)" alt="Image" />
-                                }
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@Url.Content(item.ImageUrl)" alt="Image" />
+                                    }
                             </td>
                             <td>@Html.DisplayFor(modelItem => item.PetRace.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.PetType.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.BornLocal)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PetSex.Name)</td>  
+                            <td>@Html.DisplayFor(modelItem => item.PetSex.Name)</td>
                             <td class="text-center">@Html.DisplayFor(modelItem => item.Histories.Count)</td>
                             <td class="text-center">
                                 <button class="btn btn-warning btn-responsive" onclick="EditPetItem(@item.Id)" title="Edit" id="EditPetItem"> <i class="fa fa-edit"></i></button>
@@ -116,7 +124,7 @@ else
                                 <button class="btn btn-danger  btn-responsive" onclick="DeletePetItem(@item.Id)" title="Delete" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
-                        }
+                    }
                     </tbody>
                 </table>
             </div>
@@ -128,7 +136,7 @@ else
 
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    <script type="text/javascript" src="~/js/site.js"></script>
+        <script type="text/javascript" src="~/js/site.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#dataTable').DataTable({

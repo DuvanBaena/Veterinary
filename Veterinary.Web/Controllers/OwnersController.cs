@@ -301,7 +301,7 @@ namespace Veterinary.Web.Controllers
 
                 if (model.ImageFile != null)
                 {
-                    path = await _imageHelper.UploadImageAsync(model.ImageFile);
+                    path = await _imageHelper.UploadImageAsync(model.ImageFile, "Pets");
                 }
 
                 var pet = await _converterHelper.ToPetAsync(model, path, true);
@@ -360,7 +360,7 @@ namespace Veterinary.Web.Controllers
 
                 if (model.ImageFile != null)
                 {
-                    path = await _imageHelper.UploadImageAsync(model.ImageFile);
+                    path = await _imageHelper.UploadImageAsync(model.ImageFile, "Pets");
                 }
 
                 var pet = await _converterHelper.ToPetAsync(model, path, false);
