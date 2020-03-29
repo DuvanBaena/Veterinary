@@ -191,15 +191,11 @@ namespace Veterinary.Web.Controllers
                 $"        <li> Concentrado</li>" +
                 $"        <li> Farmacia Veterinaria</li>" +
                 $"        <li> Accesorios Y jugetes</li>" +
-                $"      </ul>" +
-                $"  <div style = 'width: 100%;margin:20px 0; display: inline-block;text-align: center'>" +
-                $"    <img style = 'padding: 0; width: 200px; margin: 5px' src = 'https://veterinarianuske.com/wp-content/uploads/2018/07/tarjetas.png'>" +
-                $"  </div>" +
+                $"      </ul>" +   
                 $"  <div style = 'width: 100%; text-align: center'>" +
-                $"    <h2 style = 'color: #e67e22; margin: 0 0 7px' >Email Confirmation </h2>" +
-                $"    To allow the user,plase click in this link:</ br ></ br > " +
+                $"    <h2 style = 'color: #e67e22; margin: 0 0 7px' >Email Confirmation </h2>" +                
                 $"    <a style ='text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db' href = \"{tokenLink}\">Confirm Email</a>" +
-                $"    <p style = 'color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0' > Nuskë Clinica Integral Veterinaria 2019 </p>" +
+                $"    <p style = 'color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0' > Mercamascotas </p></br>" +
                 $"  </div>" +
                 $" </td >" +
                 $"</tr>" +

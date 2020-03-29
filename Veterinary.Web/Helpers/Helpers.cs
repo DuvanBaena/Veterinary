@@ -14,6 +14,7 @@ namespace Veterinary.Web.Helpers
         }
 
         public void SendMail(string to, string subject, string body)
+        
         {
             var from = _configuration["Mail:From"];
             var smtp = _configuration["Mail:Smtp"];

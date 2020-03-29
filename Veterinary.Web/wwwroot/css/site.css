@@ -11,7 +11,7 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
-
+    form-inline
  Carousel 
 .carousel-caption p {
     font-size: 20px;
@@ -269,18 +269,8 @@ input, select, textarea,label {
 }
 
 /* ==========================================================================
-   # Start test
+   # Start Page Confirmation Email
    ========================================================================== */
-
-
-
-
-
-
-
-
-
-
 
 
 /* ==========================================================================
@@ -447,3 +437,23 @@ input, select, textarea,label {
                 display: block;
             }
         }
+
+        .boxed-btn4 {
+            background: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid transparent;
+            color: #ff3500;
+            padding: 10px 50px;
+            font-family: "Poppins", sans-serif;
+            display: inline-block;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+        }
+
+         .boxed-btn4:hover {
+             background: #ff3500;
+             color: #fff;
+             border: 1px solid #ff3500;
+         }
