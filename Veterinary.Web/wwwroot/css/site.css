@@ -439,11 +439,11 @@ input, select, textarea,label {
         }
 
         .boxed-btn4 {
-            background: #fff;
+            background: #2f6997;
             font-size: 14px;
             font-weight: 500;
             border: 1px solid transparent;
-            color: #ff3500;
+            color: #fff;
             padding: 10px 50px;
             font-family: "Poppins", sans-serif;
             display: inline-block;

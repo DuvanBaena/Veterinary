@@ -4,7 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Owners/Details" onclick="DetailPetItem(@Model.PetId)">Clientes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Historias de Usuario</li>
+    </ol>
+</nav>
 
 <div class="container" id="advanced-search-form">
     <form asp-action="AddHistory">
@@ -13,11 +18,10 @@
 
         <partial name="_History" />
 
-
         <div class="clearfix"></div>
         <div class="text-center">
             <button type="submit" class="btn btn-info btn-lg btn-responsive" onclick="AddHistoryItemValidate()" id="search" title="Create"> <i class="fa fa-plus-square"></i></button>
-            <button type="submit" class="btn btn-success btn-lg btn-responsive" onclick="DetailPetItem(@Model.PetId)" title="Return"><i class="fa fa-undo"></i></button>
+            <button type="button" class="btn btn-success btn-lg btn-responsive" onclick="DetailPetItem(@Model.PetId)" title="Return"><i class="fa fa-undo"></i></button>
         </div>
     </form>
 </div>
