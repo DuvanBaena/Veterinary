@@ -149,7 +149,9 @@ namespace Veterinary.Web.Controllers
                 FirstName = manager.User.FirstName,
                 Id = manager.Id,
                 LastName = manager.User.LastName,
-                PhoneNumber = manager.User.PhoneNumber
+                PhoneNumber = manager.User.PhoneNumber,
+                BusinessName = manager.User.BusinessName,
+                LandlinePhone = manager.User.LandlinePhone,
             };
 
             return View(view);
@@ -171,6 +173,9 @@ namespace Veterinary.Web.Controllers
                 owner.User.LastName = view.LastName;
                 owner.User.Address = view.Address;
                 owner.User.PhoneNumber = view.PhoneNumber;
+                owner.User.BusinessName = view.BusinessName;
+                owner.User.LandlinePhone = view.LandlinePhone;
+
 
                 await _userHelper.UpdateUserAsync(owner.User);
                 try

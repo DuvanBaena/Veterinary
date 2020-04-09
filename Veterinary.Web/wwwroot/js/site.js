@@ -496,6 +496,45 @@ function ServiceTypesIndex() {
 
 //Manager
 
+
+function EditManager() {
+    
+    toastrValidated();
+    let Document = document.getElementById('Document').value;
+    let FirstName = document.getElementById('FirstName').value;
+
+    if (Document === "")
+    {
+        $("#Document").css('border-color', 'Red');
+        toastr["error"]("El campo Documento es Obligatorio", "Alerta");
+        $("#Document").focus();
+        $("#Document").keydown(function () {
+            $("#Document").css("border-color", "lightgrey");
+        });
+        $("#Document").keyup(function () {
+            $("#Document").css("border-color", "lightgrey");
+        });
+        return false;
+   
+    } else if (FirstName === '') {
+        $("#FirstName").css('border-color', 'Red');
+        toastr["error"]("El campo Nombre es Obligatorio", "Alerta");
+        $("#FirstName").focus();
+        $("#FirstName").keydown(function () {
+            $("#FirstName").css("border-color", "lightgrey");
+        });
+        $("#FirstName").keyup(function () {
+            $("#FirstName").css("border-color", "lightgrey");
+        });
+        return false;
+    }
+    else {
+        toastr["success"]("Registro exitoso!", "Felicitaciones");
+        return false;
+    }
+   
+}
+
 function ManagerDetailsItem(Id) {
     var item_to_DetailsItem = Id;
     if (Id !== undefined) {
