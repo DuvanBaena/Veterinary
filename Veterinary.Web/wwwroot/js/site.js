@@ -310,7 +310,7 @@ function AddHistoryItemValidate() {
     toastrValidated();
           
     const description = document.getElementById('Description').value;
-    const date = document.getElementById('Date').value;
+    const date = document.getElementById('datepicker').value;   
     const serviceTypeId = document.getElementById('ServiceTypeId').value;
     const resul = parseInt(serviceTypeId);
 
@@ -364,6 +364,8 @@ function DeleteHistory(Id) {
         location.href = '/Owners/DeleteHistory/' + item_to_AddHistory;
     });
 }
+
+
 
 //PetType
 
